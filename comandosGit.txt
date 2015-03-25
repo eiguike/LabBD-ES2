@@ -5,6 +5,8 @@ git status # Vê instância atual
 git commit -m "mensagem" # commit
 git pull # atualiza repositório com o commit atual
 git push # sobe o commit
+git stash # guarda as alterações que não foram commitadas ainda
+git stash pop # restaura as alterações no commit local
 
 
 git checkout <branch> # vai para o branch
