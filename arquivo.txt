@@ -1,4 +1,5 @@
 
+--teste rick
 
 SELECT  N.codigo, N.descricao, SUM(Desp.valor) AS gasto FROM despesa Desp, natureza N, (SELECT M.codigo FROM municipio M WHERE M.descricao ilike 'Campinas')Mun WHERE 
 Mun.codigo = Desp.codigomunicipio AND N.codigo = Desp.codigonatureza GROUP BY N.codigo, N.descricao ORDER BY gasto DESC;
