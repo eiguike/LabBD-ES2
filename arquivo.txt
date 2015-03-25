@@ -1,5 +1,13 @@
 
 --teste rick
+--teste rick lindaum
+
+
+
+
+
+
+
 
 SELECT  N.codigo, N.descricao, SUM(Desp.valor) AS gasto FROM despesa Desp, natureza N, (SELECT M.codigo FROM municipio M WHERE M.descricao ilike 'Campinas')Mun WHERE 
 Mun.codigo = Desp.codigomunicipio AND N.codigo = Desp.codigonatureza GROUP BY N.codigo, N.descricao ORDER BY gasto DESC;
@@ -13,6 +21,11 @@ SELECT
 -- média de gastos do programa/despesa
 
 -- 
+
+
+
+-- HUEHUEHUEHUEH
+-- HUEHUEHUEHUEsdsa
 
 select * from despesa; -- codigotipodespesa vazio, quantidadedeparcelas vazias, datadia vazia, descricao de várias outras tabelas sendo que ja tem a chave estrangeira
 select * from dominio;
