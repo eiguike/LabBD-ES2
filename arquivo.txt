@@ -1,0 +1,34 @@
+
+SELECT  N.codigo, N.descricao, SUM(Desp.valor) AS gasto FROM despesa Desp, natureza N, (SELECT M.codigo FROM municipio M WHERE M.descricao ilike 'Campinas')Mun WHERE 
+Mun.codigo = Desp.codigomunicipio AND N.codigo = Desp.codigonatureza GROUP BY N.codigo, N.descricao ORDER BY gasto DESC;
+
+
+-- periodo da despesa/cidade
+SELECT 
+
+-- despesas do programa que foram acima de x valor
+
+-- média de gastos do programa/despesa
+
+-- 
+
+select * from despesa; -- codigotipodespesa vazio, quantidadedeparcelas vazias, datadia vazia, descricao de várias outras tabelas sendo que ja tem a chave estrangeira
+select * from dominio;
+select * from fonte;
+select * from municipio;
+select * from natureza -- descrição igual, código do municipio diferente--colocar outro campo?
+select * from orgao; -- campo descrição vazio
+select * from programa; -- campo descrição vazio
+select * from subdominio;
+select * from tipodespesa; -- tabela vazia
+select * from tipolicitacao;
+select * from uf;
+
+SELECT  P.codigo, P.descricaointernamunicipio, SUM(Desp.valor) AS gasto FROM despesa Desp, programa P, (SELECT M.codigo FROM municipio M WHERE M.descricao ilike 'Campinas')Mun WHERE 
+Mun.codigo = Desp.codigomunicipio AND P.codigo = Desp.codigoprograma GROUP BY P.codigo, P.descricaointernamunicipio ORDER BY gasto DESC;
+
+SELECT * FROM programa;
+select * from natureza
+
+
+select * from despesa LIMIT 1
