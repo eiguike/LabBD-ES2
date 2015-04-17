@@ -29,8 +29,8 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jP_cantoEsquerdo = new javax.swing.JPanel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jP_buscaNormal = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
@@ -44,29 +44,24 @@ public class Principal extends javax.swing.JFrame {
 
         jP_cantoEsquerdo.setBorder(javax.swing.BorderFactory.createTitledBorder("Consultas"));
 
-        jToggleButton1.setText("jToggleButton1");
+        jButton1.setText("Busca Normal");
 
-        jToggleButton2.setText("jToggleButton2");
+        jButton2.setText("Busca Avançada");
 
         javax.swing.GroupLayout jP_cantoEsquerdoLayout = new javax.swing.GroupLayout(jP_cantoEsquerdo);
         jP_cantoEsquerdo.setLayout(jP_cantoEsquerdoLayout);
         jP_cantoEsquerdoLayout.setHorizontalGroup(
             jP_cantoEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jP_cantoEsquerdoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jP_cantoEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                    .addComponent(jToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
         );
         jP_cantoEsquerdoLayout.setVerticalGroup(
             jP_cantoEsquerdoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jP_cantoEsquerdoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jToggleButton1)
+                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButton2)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -139,7 +134,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jBt_buscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         jP_buscaAvancada.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -152,7 +147,7 @@ public class Principal extends javax.swing.JFrame {
         );
         jP_buscaAvancadaLayout.setVerticalGroup(
             jP_buscaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 135, Short.MAX_VALUE)
+            .addGap(0, 133, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -230,6 +225,8 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBt_buscar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jP_buscaAvancada;
     private javax.swing.JPanel jP_buscaNormal;
     private javax.swing.JPanel jP_cantoEsquerdo;
@@ -238,7 +235,5 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
     // End of variables declaration//GEN-END:variables
 }
