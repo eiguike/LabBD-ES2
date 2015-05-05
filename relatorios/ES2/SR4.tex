@@ -37,7 +37,17 @@
 \onehalfspacing
 \setlength{\parindent}{1cm} % Default is 15pt.
 
-\title{Status Report 2}
+%%%% NOME DO DOCUMENTO NO OVERLEAF
+\title{Status Report 4}
+
+%%%% METADADOS DO PDF   
+   \pdfinfo{
+   /Author (Alessandro Henrique Gabriela Gustavo)
+   /Title  (Status Report 4 380105 490016 489689 489999)
+%    /CreationDate (D:20040502195600)
+   /Subject (Integrado)
+   /Keywords (ES2 LabBD Status Report)
+}
 
 \begin{document}
 
@@ -87,8 +97,8 @@
 
 \vfill
 \begin{flushright}
-{\large Data de entrega: 20/04/2015}\\[0.2cm]
-{\large Status Report 2}\\[2.0cm]
+{\large Data de entrega: 04/05/2015}\\[0.2cm]
+{\large Status Report 4}\\[2.0cm]
 \end{flushright}
 
 \begin{center}
@@ -108,43 +118,51 @@
 
 \begin{longtable}{|l|l|}
 \hline
-\textbf{Status Report} & 2\\
+\textbf{Status Report} & 4\\
 \hline
-\textbf{Período}	&	13/04/2015 à 20/04/2015 \\
+\textbf{Período}	&	27/04/2015 à 04/05/2015 \\
 \hline
 \end{longtable}
 
-Desenvolvimento do \textit{layout} da tela de busca, estruturando-a de modo a comportar as duas buscas (simples e avançada) numa tela, além do início da otimização do Banco de Dados.
+%Finalização da otimização do Banco de Dados, além do início da implementação interna do SGDB.
 
 \section{Atividades do Período}
+
+Neste período foi finalizada a Implementação interna do SGDB. Porém no decorrer desta semana, identificamos erros na:
+
+\begin{itemize}
+
+\item{Otimização/Indexação do Banco de Dados;}
+
+\item{Implementação do \textit{Model};}
+
+\item{Implementação do \textit{View};}
+
+\item{Implementação do \textit{Control}.}
+
+
+\end{itemize}
+
+Portanto estas etapas serão refeitas e terão seus prazos atualizados.
+
+
+\section{Próximas Atividades}
+
+Pretendemos finalizar as correções na:
 
 \begin{itemize}
 
 \item{Implementação do \textit{Model};}
-\item{Implementação do \textit{View};}
-\item{Início da otimização do Banco de Dados.}
+
+\item{Implementação do \textit{View}.}
 
 \end{itemize}
-
-\section{Próxima Atividade}
-
-% As atividades abaixo tiveram os prazos modificados, pois ainda não temos base (a aula referente ainda não foi ministrada) para implementar estas etapas.
-
-\begin{itemize}
-
-\item{Implementação interna do SGBD.}
-
-\end{itemize}
-
-
 
 
 \newpage
 \section{Cronograma}
 
-A seguir o cronograma com a estimativa de tempo para realizar as atividades que compõem as entregas do produto. A parte verde representa as atividades já concluídas:\\
-
-% , a azul representa as que tiveram alterações no prazo
+A seguir o cronograma com a estimativa de tempo para realizar as atividades que compõem as entregas do produto. A parte verde representa as atividades já concluídas, a azul representa as que tiveram alterações no prazo:\\
 
 {\normalsize %Aplica o tamanho de fonte abaixo para toda tabela. 2ª chave está lá em baixo
 
@@ -170,20 +188,23 @@ Prototipagem das janelas de consulta      & 06/04/2015                          
 
 \hline
 \rowcolor{electricgreen}
-Implementação do \textit{Model}           & 13/04/2015                           & 13/04/2015                        \\ \hline
-
-\hline
-\rowcolor{electricgreen}
-Implementação do \textit{View}            & 09/04/2015                           & 17/04/2015                        \\ \hline
-
-
-Otimização/Indexação do Banco de Dados    & 17/04/2015                           & 24/04/2015                        \\ \hline
-
-
 Implementação interna do SGBD             & 24/04/2015                           & 30/04/2015                        \\ \hline
 
+\hline
+\rowcolor{ultramarineblue}
+Implementação do \textit{Model}           & 04/05/2015                           & 11/05/2015                        \\ \hline
 
-Implementação do \textit{Control}         & 09/05/2015                           & 14/05/2015                        \\ \hline
+\hline
+\rowcolor{ultramarineblue}
+Otimização/Indexação do Banco de Dados    & 04/05/2015                           & 11/05/2015                        \\ \hline
+
+\hline
+\rowcolor{ultramarineblue}
+Implementação da \textit{View}            & 04/05/2015                           & 18/05/2015                        \\ \hline
+
+\hline
+\rowcolor{ultramarineblue}
+Implementação do \textit{Control}         & 09/05/2015                           & 18/05/2015                        \\ \hline
 
 
 
