@@ -1,1 +1,4 @@
 /Dados Abertos - LabBDES2/build/
+*.properties
+
+*.xml
