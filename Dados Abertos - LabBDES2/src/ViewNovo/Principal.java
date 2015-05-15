@@ -7,6 +7,7 @@ package ViewNovo;
 
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -22,8 +23,15 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
-        
-        
+        lblItensObrigatorios.setVisible(false);
+        lblItensObrigatorios.setForeground(Color.red);
+        txtFieldMunicipio.setToolTipText("Insira aqui o município que deseja pesquisar.");
+        txtFieldNatureza1.setToolTipText("Insira aqui o tipo de natureza que deseja pesquisar.");
+        txtFieldNatureza2.setToolTipText("Campo adicional de tipo de natureza.");
+        txtFieldDataInicial.setToolTipText("Data inicial do período.");
+        txtFieldDataFinal.setToolTipText("Data final do período.");
+        txtFieldValorInicial.setToolTipText("Valor mínimo.");
+        txtFieldValorFinal.setToolTipText("Valor máximo.");
     }
 
     /**
@@ -269,11 +277,13 @@ public class Principal extends javax.swing.JFrame {
         pnlConsultaAvancada.setBackground(new java.awt.Color(204, 204, 204));
         pnlConsultaAvancada.setForeground(new java.awt.Color(204, 204, 204));
 
-        lblItensObrigatorios.setText("* Itens Obrigatórios");
+        lblItensObrigatorios.setForeground(new java.awt.Color(255, 0, 0));
+        lblItensObrigatorios.setText("Itens Obrigatórios");
+        lblItensObrigatorios.setName("itemObrigatorio"); // NOI18N
 
-        lblMunicipio.setText("Município*:");
+        lblMunicipio.setText("Município:");
 
-        lblNatureza1.setText("Natureza 1*:");
+        lblNatureza1.setText("Natureza 1:");
 
         lblNatureza2.setText("Natureza 2:");
 
@@ -286,42 +296,26 @@ public class Principal extends javax.swing.JFrame {
         lblValorFinal.setText("Valor Final:");
 
         txtFieldMunicipio.setForeground(new java.awt.Color(102, 102, 102));
-        txtFieldMunicipio.setText("jTextField1");
         txtFieldMunicipio.setCaretColor(new java.awt.Color(102, 102, 102));
+        txtFieldMunicipio.setName(""); // NOI18N
 
         txtFieldNatureza1.setForeground(new java.awt.Color(102, 102, 102));
-        txtFieldNatureza1.setText("jTextField2");
         txtFieldNatureza1.setCaretColor(new java.awt.Color(102, 102, 102));
 
         txtFieldNatureza2.setForeground(new java.awt.Color(102, 102, 102));
-        txtFieldNatureza2.setText("jTextField2");
         txtFieldNatureza2.setCaretColor(new java.awt.Color(102, 102, 102));
-        txtFieldNatureza2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldNatureza2ActionPerformed(evt);
-            }
-        });
 
         txtFieldDataInicial.setForeground(new java.awt.Color(102, 102, 102));
-        txtFieldDataInicial.setText("jTextField2");
         txtFieldDataInicial.setCaretColor(new java.awt.Color(102, 102, 102));
 
         txtFieldDataFinal.setForeground(new java.awt.Color(102, 102, 102));
-        txtFieldDataFinal.setText("jTextField2");
         txtFieldDataFinal.setCaretColor(new java.awt.Color(102, 102, 102));
 
         txtFieldValorInicial.setForeground(new java.awt.Color(102, 102, 102));
-        txtFieldValorInicial.setText("jTextField2");
         txtFieldValorInicial.setCaretColor(new java.awt.Color(102, 102, 102));
 
         txtFieldValorFinal.setForeground(new java.awt.Color(102, 102, 102));
-        txtFieldValorFinal.setText("jTextField2");
         txtFieldValorFinal.setCaretColor(new java.awt.Color(102, 102, 102));
-        txtFieldValorFinal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldValorFinalActionPerformed(evt);
-            }
-        });
 
         btPesquisarCAvancada.setBackground(new java.awt.Color(0, 102, 153));
         btPesquisarCAvancada.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -338,7 +332,7 @@ public class Principal extends javax.swing.JFrame {
         pnlConsultaAvancadaLayout.setHorizontalGroup(
             pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
-                .addContainerGap(68, Short.MAX_VALUE)
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
                         .addComponent(lblItensObrigatorios)
@@ -372,14 +366,14 @@ public class Principal extends javax.swing.JFrame {
                                         .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(btPesquisarCAvancada)
                                             .addComponent(txtFieldValorFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addContainerGap(77, Short.MAX_VALUE))
+                                        .addContainerGap(38, Short.MAX_VALUE))
                                     .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
                                         .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtFieldDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtFieldNatureza2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
-                                .addComponent(txtFieldMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtFieldMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))))
         );
         pnlConsultaAvancadaLayout.setVerticalGroup(
@@ -463,12 +457,12 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
                         .addComponent(pnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pnlCardLayout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(pnlCardLayout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblRodape)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblRodape)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlPrincipalLayout.setVerticalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -555,16 +549,49 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btPesquisarCSimplesActionPerformed
 
     private void btPesquisarCAvancadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarCAvancadaActionPerformed
-        // TODO add your handling code here:
+        if(txtFieldMunicipio.getText().isEmpty() || txtFieldNatureza1.getText().isEmpty())
+        {
+            if(txtFieldMunicipio.getText().isEmpty())
+            {
+                lblMunicipio.setForeground(Color.red);
+                txtFieldMunicipio.setCaretColor(Color.red);
+                txtFieldMunicipio.setForeground(Color.red);
+            }
+            else
+            {
+                lblMunicipio.setForeground(lblNatureza2.getForeground());
+                txtFieldMunicipio.setCaretColor(txtFieldNatureza2.getCaretColor());
+                txtFieldMunicipio.setForeground(txtFieldNatureza2.getForeground());
+            }
+            
+            if(txtFieldNatureza1.getText().isEmpty())
+            {
+                lblNatureza1.setForeground(Color.red);
+                txtFieldNatureza1.setCaretColor(Color.red);
+                txtFieldNatureza1.setForeground(Color.red);
+            }
+            else
+            {
+                lblNatureza1.setForeground(lblNatureza2.getForeground());
+                txtFieldNatureza1.setCaretColor(txtFieldNatureza2.getCaretColor());
+                txtFieldNatureza1.setForeground(txtFieldNatureza2.getForeground());
+            }
+            
+            lblItensObrigatorios.setVisible(true);
+        }
+        else
+        {
+            lblMunicipio.setForeground(lblNatureza2.getForeground());
+            txtFieldMunicipio.setCaretColor(txtFieldNatureza2.getCaretColor());
+            txtFieldMunicipio.setForeground(txtFieldNatureza2.getForeground());
+            lblNatureza1.setForeground(lblNatureza2.getForeground());
+            txtFieldNatureza1.setCaretColor(txtFieldNatureza2.getCaretColor());
+            txtFieldNatureza1.setForeground(txtFieldNatureza2.getForeground());
+            lblItensObrigatorios.setVisible(false);
+            
+            //PARTE DE BUSCA AO BANCO DE DADOS
+        }
     }//GEN-LAST:event_btPesquisarCAvancadaActionPerformed
-
-    private void txtFieldValorFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldValorFinalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldValorFinalActionPerformed
-
-    private void txtFieldNatureza2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldNatureza2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldNatureza2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -701,7 +728,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btGroup;
     private javax.swing.JButton btPesquisarCAvancada;
     private javax.swing.JButton btPesquisarCSimples;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRButtonNatureza;
     private javax.swing.JRadioButton jRButtonPrograma;
     private javax.swing.JLabel lblConsultas;
