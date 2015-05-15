@@ -67,9 +67,9 @@ public class Principal extends javax.swing.JFrame {
         txtFieldValorInicial = new RoundJTextField(25);
         txtFieldValorFinal = new RoundJTextField(25);
         btPesquisarCAvancada = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
         pnlResultadoConsultaSimples = new RoundedPanel();
         pnlResultadoConsultaAvancada = new RoundedPanel();
+        lblRodape = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Consultas Públicas");
@@ -261,7 +261,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jRButtonNatureza)
                         .addComponent(jRButtonPrograma))
                     .addComponent(btPesquisarCSimples, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         pnlCardLayout.add(pnlConsultaSimples, "pnlConsultaSimples");
@@ -333,40 +333,23 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 56, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout pnlConsultaAvancadaLayout = new javax.swing.GroupLayout(pnlConsultaAvancada);
         pnlConsultaAvancada.setLayout(pnlConsultaAvancadaLayout);
         pnlConsultaAvancadaLayout.setHorizontalGroup(
             pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(68, Short.MAX_VALUE)
                 .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblItensObrigatorios)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
                         .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
-                                .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblMunicipio)
-                                    .addComponent(lblNatureza1)
-                                    .addComponent(lblDataInicial))
-                                .addGap(18, 18, 18))
-                            .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblValorInicial)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(lblMunicipio)
+                            .addComponent(lblNatureza1)
+                            .addComponent(lblDataInicial)
+                            .addComponent(lblValorInicial))
+                        .addGap(18, 18, 18)
                         .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
                                 .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -389,7 +372,7 @@ public class Principal extends javax.swing.JFrame {
                                         .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(btPesquisarCAvancada)
                                             .addComponent(txtFieldValorFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addContainerGap(74, Short.MAX_VALUE))
+                                        .addContainerGap(77, Short.MAX_VALUE))
                                     .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
                                         .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtFieldDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -397,39 +380,33 @@ public class Principal extends javax.swing.JFrame {
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
                                 .addComponent(txtFieldMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
-                        .addComponent(lblItensObrigatorios)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE))))))
         );
         pnlConsultaAvancadaLayout.setVerticalGroup(
             pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
-                .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
-                        .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFieldMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblMunicipio))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNatureza2)
-                            .addComponent(txtFieldNatureza1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFieldNatureza2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNatureza1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDataInicial)
-                            .addComponent(lblDataFinal)
-                            .addComponent(txtFieldDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFieldDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6)
-                        .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFieldValorInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblValorFinal)
-                            .addComponent(txtFieldValorFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblValorInicial)))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFieldMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMunicipio))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNatureza2)
+                    .addComponent(txtFieldNatureza1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFieldNatureza2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNatureza1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDataInicial)
+                    .addComponent(lblDataFinal)
+                    .addComponent(txtFieldDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFieldDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFieldValorInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblValorFinal)
+                    .addComponent(txtFieldValorFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblValorInicial))
                 .addGap(27, 27, 27)
                 .addComponent(btPesquisarCAvancada, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -450,7 +427,7 @@ public class Principal extends javax.swing.JFrame {
         );
         pnlResultadoConsultaSimplesLayout.setVerticalGroup(
             pnlResultadoConsultaSimplesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 252, Short.MAX_VALUE)
+            .addGap(0, 251, Short.MAX_VALUE)
         );
 
         pnlCardLayout.add(pnlResultadoConsultaSimples, "pnlResultadoConsultaSimples");
@@ -466,10 +443,14 @@ public class Principal extends javax.swing.JFrame {
         );
         pnlResultadoConsultaAvancadaLayout.setVerticalGroup(
             pnlResultadoConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 252, Short.MAX_VALUE)
+            .addGap(0, 251, Short.MAX_VALUE)
         );
 
         pnlCardLayout.add(pnlResultadoConsultaAvancada, "pnlResultadoConsultaAvancada");
+
+        lblRodape.setFont(new java.awt.Font("Verdana", 1, 11)); // NOI18N
+        lblRodape.setForeground(new java.awt.Color(0, 51, 102));
+        lblRodape.setText("2015");
 
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
         pnlPrincipal.setLayout(pnlPrincipalLayout);
@@ -484,6 +465,10 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pnlCardLayout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblRodape)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlPrincipalLayout.setVerticalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -494,7 +479,9 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlCardLayout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(49, 49, 49))
+                .addGap(24, 24, 24)
+                .addComponent(lblRodape)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -714,7 +701,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btGroup;
     private javax.swing.JButton btPesquisarCAvancada;
     private javax.swing.JButton btPesquisarCSimples;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRButtonNatureza;
     private javax.swing.JRadioButton jRButtonPrograma;
     private javax.swing.JLabel lblConsultas;
@@ -724,6 +711,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel lblMunicipio;
     private javax.swing.JLabel lblNatureza1;
     private javax.swing.JLabel lblNatureza2;
+    private javax.swing.JLabel lblRodape;
     private javax.swing.JLabel lblValorFinal;
     private javax.swing.JLabel lblValorInicial;
     private javax.swing.JPanel pnlBordaBotoes;
