@@ -49,7 +49,7 @@ public class Principal extends javax.swing.JFrame {
         txtFieldConsultaSimples = new RoundJTextField(25);
         jRButtonNatureza = new javax.swing.JRadioButton();
         jRButtonPrograma = new javax.swing.JRadioButton();
-        btPesquisar = new javax.swing.JButton();
+        btPesquisarCSimples = new javax.swing.JButton();
         pnlConsultaAvancada = new RoundedPanel();
         lblItensObrigatorios = new javax.swing.JLabel();
         lblMunicipio = new javax.swing.JLabel();
@@ -59,6 +59,15 @@ public class Principal extends javax.swing.JFrame {
         lblDataFinal = new javax.swing.JLabel();
         lblValorInicial = new javax.swing.JLabel();
         lblValorFinal = new javax.swing.JLabel();
+        txtFieldMunicipio = new RoundJTextField(25);
+        txtFieldNatureza1 = new RoundJTextField(25);
+        txtFieldNatureza2 = new RoundJTextField(25);
+        txtFieldDataInicial = new RoundJTextField(25);
+        txtFieldDataFinal = new RoundJTextField(25);
+        txtFieldValorInicial = new RoundJTextField(25);
+        txtFieldValorFinal = new RoundJTextField(25);
+        btPesquisarCAvancada = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         pnlResultadoConsultaSimples = new RoundedPanel();
         pnlResultadoConsultaAvancada = new RoundedPanel();
 
@@ -215,13 +224,13 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btPesquisar.setBackground(new java.awt.Color(0, 102, 153));
-        btPesquisar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btPesquisar.setForeground(new java.awt.Color(255, 255, 255));
-        btPesquisar.setText("Pesquisar");
-        btPesquisar.addActionListener(new java.awt.event.ActionListener() {
+        btPesquisarCSimples.setBackground(new java.awt.Color(0, 102, 153));
+        btPesquisarCSimples.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btPesquisarCSimples.setForeground(new java.awt.Color(255, 255, 255));
+        btPesquisarCSimples.setText("Pesquisar");
+        btPesquisarCSimples.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btPesquisarActionPerformed(evt);
+                btPesquisarCSimplesActionPerformed(evt);
             }
         });
 
@@ -230,29 +239,29 @@ public class Principal extends javax.swing.JFrame {
         pnlConsultaSimplesLayout.setHorizontalGroup(
             pnlConsultaSimplesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlConsultaSimplesLayout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
+                .addContainerGap(85, Short.MAX_VALUE)
                 .addGroup(pnlConsultaSimplesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlConsultaSimplesLayout.createSequentialGroup()
                         .addComponent(jRButtonNatureza)
                         .addGap(28, 28, 28)
                         .addComponent(jRButtonPrograma)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
-                        .addComponent(btPesquisar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
+                        .addComponent(btPesquisarCSimples))
                     .addComponent(txtFieldConsultaSimples))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
         pnlConsultaSimplesLayout.setVerticalGroup(
             pnlConsultaSimplesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlConsultaSimplesLayout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addComponent(txtFieldConsultaSimples, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlConsultaSimplesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlConsultaSimplesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jRButtonNatureza)
                         .addComponent(jRButtonPrograma))
-                    .addComponent(btPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(80, Short.MAX_VALUE))
+                    .addComponent(btPesquisarCSimples, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pnlCardLayout.add(pnlConsultaSimples, "pnlConsultaSimples");
@@ -276,49 +285,156 @@ public class Principal extends javax.swing.JFrame {
 
         lblValorFinal.setText("Valor Final:");
 
+        txtFieldMunicipio.setForeground(new java.awt.Color(102, 102, 102));
+        txtFieldMunicipio.setText("jTextField1");
+        txtFieldMunicipio.setCaretColor(new java.awt.Color(102, 102, 102));
+
+        txtFieldNatureza1.setForeground(new java.awt.Color(102, 102, 102));
+        txtFieldNatureza1.setText("jTextField2");
+        txtFieldNatureza1.setCaretColor(new java.awt.Color(102, 102, 102));
+
+        txtFieldNatureza2.setForeground(new java.awt.Color(102, 102, 102));
+        txtFieldNatureza2.setText("jTextField2");
+        txtFieldNatureza2.setCaretColor(new java.awt.Color(102, 102, 102));
+        txtFieldNatureza2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFieldNatureza2ActionPerformed(evt);
+            }
+        });
+
+        txtFieldDataInicial.setForeground(new java.awt.Color(102, 102, 102));
+        txtFieldDataInicial.setText("jTextField2");
+        txtFieldDataInicial.setCaretColor(new java.awt.Color(102, 102, 102));
+
+        txtFieldDataFinal.setForeground(new java.awt.Color(102, 102, 102));
+        txtFieldDataFinal.setText("jTextField2");
+        txtFieldDataFinal.setCaretColor(new java.awt.Color(102, 102, 102));
+
+        txtFieldValorInicial.setForeground(new java.awt.Color(102, 102, 102));
+        txtFieldValorInicial.setText("jTextField2");
+        txtFieldValorInicial.setCaretColor(new java.awt.Color(102, 102, 102));
+
+        txtFieldValorFinal.setForeground(new java.awt.Color(102, 102, 102));
+        txtFieldValorFinal.setText("jTextField2");
+        txtFieldValorFinal.setCaretColor(new java.awt.Color(102, 102, 102));
+        txtFieldValorFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFieldValorFinalActionPerformed(evt);
+            }
+        });
+
+        btPesquisarCAvancada.setBackground(new java.awt.Color(0, 102, 153));
+        btPesquisarCAvancada.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btPesquisarCAvancada.setForeground(new java.awt.Color(255, 255, 255));
+        btPesquisarCAvancada.setText("Pesquisar");
+        btPesquisarCAvancada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPesquisarCAvancadaActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 56, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout pnlConsultaAvancadaLayout = new javax.swing.GroupLayout(pnlConsultaAvancada);
         pnlConsultaAvancada.setLayout(pnlConsultaAvancadaLayout);
         pnlConsultaAvancadaLayout.setHorizontalGroup(
             pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
-                .addGap(73, 73, 73)
+                .addContainerGap()
                 .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblItensObrigatorios)
                     .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
-                        .addComponent(lblNatureza1)
-                        .addGap(178, 178, 178)
-                        .addComponent(lblNatureza2))
-                    .addComponent(lblMunicipio)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
+                                .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblMunicipio)
+                                    .addComponent(lblNatureza1)
+                                    .addComponent(lblDataInicial))
+                                .addGap(18, 18, 18))
+                            .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblValorInicial)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
+                                .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
+                                        .addGap(1, 1, 1)
+                                        .addComponent(txtFieldDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblDataFinal))
+                                    .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
+                                        .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtFieldNatureza1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtFieldValorInicial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblNatureza2)
+                                            .addComponent(lblValorFinal))))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
+                                        .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(btPesquisarCAvancada)
+                                            .addComponent(txtFieldValorFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addContainerGap(74, Short.MAX_VALUE))
+                                    .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
+                                        .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtFieldDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtFieldNatureza2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
+                                .addComponent(txtFieldMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
-                        .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblDataInicial)
-                            .addComponent(lblValorInicial))
-                        .addGap(183, 183, 183)
-                        .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblValorFinal)
-                            .addComponent(lblDataFinal))))
-                .addGap(207, 207, 207))
+                        .addComponent(lblItensObrigatorios)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         pnlConsultaAvancadaLayout.setVerticalGroup(
             pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblItensObrigatorios)
-                .addGap(31, 31, 31)
-                .addComponent(lblMunicipio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNatureza1)
-                    .addComponent(lblNatureza2))
-                .addGap(18, 18, 18)
+                .addContainerGap(53, Short.MAX_VALUE)
                 .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDataInicial)
-                    .addComponent(lblDataFinal))
-                .addGap(18, 18, 18)
-                .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblValorInicial)
-                    .addComponent(lblValorFinal))
-                .addContainerGap(84, Short.MAX_VALUE))
+                    .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
+                        .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFieldMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMunicipio))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNatureza2)
+                            .addComponent(txtFieldNatureza1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFieldNatureza2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNatureza1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDataInicial)
+                            .addComponent(lblDataFinal)
+                            .addComponent(txtFieldDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFieldDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFieldValorInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblValorFinal)
+                            .addComponent(txtFieldValorFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblValorInicial)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(btPesquisarCAvancada, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblItensObrigatorios)
+                .addGap(13, 13, 13))
         );
 
         pnlCardLayout.add(pnlConsultaAvancada, "pnlConsultaAvancada");
@@ -330,11 +446,11 @@ public class Principal extends javax.swing.JFrame {
         pnlResultadoConsultaSimples.setLayout(pnlResultadoConsultaSimplesLayout);
         pnlResultadoConsultaSimplesLayout.setHorizontalGroup(
             pnlResultadoConsultaSimplesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+            .addGap(0, 655, Short.MAX_VALUE)
         );
         pnlResultadoConsultaSimplesLayout.setVerticalGroup(
             pnlResultadoConsultaSimplesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 249, Short.MAX_VALUE)
+            .addGap(0, 252, Short.MAX_VALUE)
         );
 
         pnlCardLayout.add(pnlResultadoConsultaSimples, "pnlResultadoConsultaSimples");
@@ -346,11 +462,11 @@ public class Principal extends javax.swing.JFrame {
         pnlResultadoConsultaAvancada.setLayout(pnlResultadoConsultaAvancadaLayout);
         pnlResultadoConsultaAvancadaLayout.setHorizontalGroup(
             pnlResultadoConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+            .addGap(0, 655, Short.MAX_VALUE)
         );
         pnlResultadoConsultaAvancadaLayout.setVerticalGroup(
             pnlResultadoConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 249, Short.MAX_VALUE)
+            .addGap(0, 252, Short.MAX_VALUE)
         );
 
         pnlCardLayout.add(pnlResultadoConsultaAvancada, "pnlResultadoConsultaAvancada");
@@ -385,11 +501,11 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
+            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
+            .addComponent(pnlPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
         );
 
         pnlPrincipal.getAccessibleContext().setAccessibleName("");
@@ -443,13 +559,25 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jRButtonProgramaActionPerformed
 
-    private void btPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarActionPerformed
+    private void btPesquisarCSimplesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarCSimplesActionPerformed
          CardLayout c3 = (CardLayout)(pnlCardLayout.getLayout());
         
         c3.show(pnlCardLayout, "pnlResultadoConsultaSimples"); 
          
          setTitle("Resultado Consulta Simples");
-    }//GEN-LAST:event_btPesquisarActionPerformed
+    }//GEN-LAST:event_btPesquisarCSimplesActionPerformed
+
+    private void btPesquisarCAvancadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarCAvancadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btPesquisarCAvancadaActionPerformed
+
+    private void txtFieldValorFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldValorFinalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFieldValorFinalActionPerformed
+
+    private void txtFieldNatureza2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldNatureza2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFieldNatureza2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -584,7 +712,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btConsultaAvancada;
     private javax.swing.JButton btConsultaSimples;
     private javax.swing.ButtonGroup btGroup;
-    private javax.swing.JButton btPesquisar;
+    private javax.swing.JButton btPesquisarCAvancada;
+    private javax.swing.JButton btPesquisarCSimples;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRButtonNatureza;
     private javax.swing.JRadioButton jRButtonPrograma;
     private javax.swing.JLabel lblConsultas;
@@ -607,5 +737,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel pnlResultadoConsultaAvancada;
     private javax.swing.JPanel pnlResultadoConsultaSimples;
     private javax.swing.JTextField txtFieldConsultaSimples;
+    private javax.swing.JTextField txtFieldDataFinal;
+    private javax.swing.JTextField txtFieldDataInicial;
+    private javax.swing.JTextField txtFieldMunicipio;
+    private javax.swing.JTextField txtFieldNatureza1;
+    private javax.swing.JTextField txtFieldNatureza2;
+    private javax.swing.JTextField txtFieldValorFinal;
+    private javax.swing.JTextField txtFieldValorInicial;
     // End of variables declaration//GEN-END:variables
 }
