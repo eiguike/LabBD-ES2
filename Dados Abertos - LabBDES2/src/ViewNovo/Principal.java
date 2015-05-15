@@ -552,7 +552,6 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jRButtonProgramaActionPerformed
 
     private void btPesquisarCSimplesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarCSimplesActionPerformed
-
         
         // verificação de erros no formulário
         // verifica se o campo de busca esta vazio e também, se o campo possui o texto padrão "Pesquise..."
@@ -561,17 +560,22 @@ public class Principal extends javax.swing.JFrame {
                     || txtFieldConsultaSimples.getText().compareTo("Pesquise por Programa") == 0
                     || txtFieldConsultaSimples.getText().compareTo("Pesquise...") == 0){
                 txtFieldConsultaSimples.requestFocus();
+                txtFieldConsultaSimples.setForeground(Color.red);
                 JOptionPane.showMessageDialog(null,"O campo de busca está vazio!","Aviso!",JOptionPane.WARNING_MESSAGE);
                 return;
             }
         }else{
+            txtFieldConsultaSimples.setForeground(Color.red);
             JOptionPane.showMessageDialog(null,"O campo de busca está vazio!","Aviso!",JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
+        txtFieldConsultaSimples.setForeground(Color.gray);        
+        
         if(!jRButtonNatureza.isSelected() && !jRButtonPrograma.isSelected()){
             JOptionPane.showMessageDialog(null,"Você precisa especificar se é Natureza ou Programa que deseja procurar!","Aviso!",JOptionPane.WARNING_MESSAGE);
         }else{
-            
+        
             // caso dê tudo certo (campo não vazio e radio button selecionado
             // ele entrará aqui...
             CardLayout c3 = (CardLayout)(pnlCardLayout.getLayout());
