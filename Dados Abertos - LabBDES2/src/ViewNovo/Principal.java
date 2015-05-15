@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Gabs
@@ -205,6 +207,9 @@ public class Principal extends javax.swing.JFrame {
         txtFieldConsultaSimples.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldConsultaSimplesFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtFieldConsultaSimplesFocusLost(evt);
             }
         });
 
@@ -463,12 +468,12 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(pnlPrincipalLayout.createSequentialGroup()
                         .addComponent(pnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pnlCardLayout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(pnlCardLayout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblRodape)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPrincipalLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblRodape)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlPrincipalLayout.setVerticalGroup(
             pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -547,11 +552,33 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jRButtonProgramaActionPerformed
 
     private void btPesquisarCSimplesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarCSimplesActionPerformed
-         CardLayout c3 = (CardLayout)(pnlCardLayout.getLayout());
+
         
-        c3.show(pnlCardLayout, "pnlResultadoConsultaSimples"); 
-         
-         setTitle("Resultado Consulta Simples");
+        // verificação de erros no formulário
+        // verifica se o campo de busca esta vazio e também, se o campo possui o texto padrão "Pesquise..."
+        if(!txtFieldConsultaSimples.getText().isEmpty()){
+            if(txtFieldConsultaSimples.getText().compareTo("Pesquise por Natureza") == 0 
+                    || txtFieldConsultaSimples.getText().compareTo("Pesquise por Programa") == 0
+                    || txtFieldConsultaSimples.getText().compareTo("Pesquise...") == 0){
+                txtFieldConsultaSimples.requestFocus();
+                JOptionPane.showMessageDialog(null,"O campo de busca está vazio!","Aviso!",JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"O campo de busca está vazio!","Aviso!",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if(!jRButtonNatureza.isSelected() && !jRButtonPrograma.isSelected()){
+            JOptionPane.showMessageDialog(null,"Você precisa especificar se é Natureza ou Programa que deseja procurar!","Aviso!",JOptionPane.WARNING_MESSAGE);
+        }else{
+            
+            // caso dê tudo certo (campo não vazio e radio button selecionado
+            // ele entrará aqui...
+            CardLayout c3 = (CardLayout)(pnlCardLayout.getLayout());
+            c3.show(pnlCardLayout, "pnlResultadoConsultaSimples"); 
+            setTitle("Resultado Consulta Simples");  
+        }   
+      
     }//GEN-LAST:event_btPesquisarCSimplesActionPerformed
 
     private void btPesquisarCAvancadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarCAvancadaActionPerformed
@@ -565,6 +592,10 @@ public class Principal extends javax.swing.JFrame {
     private void txtFieldNatureza2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldNatureza2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFieldNatureza2ActionPerformed
+
+    private void txtFieldConsultaSimplesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldConsultaSimplesFocusLost
+
+    }//GEN-LAST:event_txtFieldConsultaSimplesFocusLost
 
     /**
      * @param args the command line arguments
@@ -701,7 +732,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btGroup;
     private javax.swing.JButton btPesquisarCAvancada;
     private javax.swing.JButton btPesquisarCSimples;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRButtonNatureza;
     private javax.swing.JRadioButton jRButtonPrograma;
     private javax.swing.JLabel lblConsultas;
