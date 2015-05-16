@@ -1,24 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Control;
 import Model.buscaNormal;
 import java.sql.*;
 import java.util.ArrayList;
 
-/**
- *
- * @author floss
- */
 public class buscaNormalNatureza {
     private ConexaoBD conexao;
     
     buscaNormalNatureza(ConexaoBD con){
         conexao = con;
     }
-    
+  
     ArrayList<buscaNormal> getBuscaNormalNatureza(String descricao){
 	    ArrayList<buscaNormal> resultado = new ArrayList<buscaNormal>();
 	    ResultSet rs = null;
@@ -54,6 +45,4 @@ public class buscaNormalNatureza {
 
 	    return resultado;
     }
-    
-    
 }
