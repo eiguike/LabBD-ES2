@@ -30,24 +30,24 @@ package Model;
  * @author floss
  */
 public class buscaNormal {
-    private Integer naturezaCodigo;
-    private String naturezaDescricao;
+    private Integer codigo;
+    private String descricao;
     private Float gasto;    
     
     public Integer getNaturezaCodigo() {
-        return naturezaCodigo;
+        return codigo;
     }
 
     public void setNaturezaCodigo(Integer naturezaCodigo) {
-        this.naturezaCodigo = naturezaCodigo;
+        this.codigo = naturezaCodigo;
     }
 
     public String getNaturezaDescricao() {
-        return naturezaDescricao;
+        return descricao;
     }
 
     public void setNaturezaDescricao(String naturezaDescricao) {
-        this.naturezaDescricao = naturezaDescricao;
+        this.descricao = naturezaDescricao;
     }
 
     public Float getGasto() {
