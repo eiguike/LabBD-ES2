@@ -7,11 +7,11 @@ public class buscaNormalNatureza {
     private ArrayList<buscaNormal> resultado;
     private ConexaoBD conexao;
     
-    buscaNormalNatureza(ConexaoBD con){
+    public buscaNormalNatureza(ConexaoBD con){
         conexao = con;
     }
 
-    ArrayList<buscaNormal> getBuscaNormalPrograma(String descricao){
+    public ArrayList<buscaNormal> getBuscaNormalPrograma(String descricao){
 	    ArrayList<buscaNormal> resultado = new ArrayList<buscaNormal>();
 	    ResultSet rs = null;
 	    buscaNormal aux = null;
@@ -44,7 +44,7 @@ public class buscaNormalNatureza {
 	    return resultado;
     }
   
-    ArrayList<buscaNormal> getBuscaNormalNatureza(String descricao){
+    public ArrayList<buscaNormal> getBuscaNormalNatureza(String descricao){
 	    ArrayList<buscaNormal> resultado = new ArrayList<buscaNormal>();
 	    ResultSet rs = null;
 	    buscaNormal aux = null;
