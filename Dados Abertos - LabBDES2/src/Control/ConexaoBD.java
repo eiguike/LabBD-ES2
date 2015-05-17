@@ -1,5 +1,4 @@
 package Control;
-import Model.*;
 import java.sql.*;
 
 public class ConexaoBD {

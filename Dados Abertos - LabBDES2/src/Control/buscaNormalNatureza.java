@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class buscaNormalNatureza {
+    private ArrayList<buscaNormal> resultado;
     private ConexaoBD conexao;
     
     buscaNormalNatureza(ConexaoBD con){
