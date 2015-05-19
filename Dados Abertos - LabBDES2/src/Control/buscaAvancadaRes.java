@@ -22,8 +22,21 @@ public class buscaAvancadaRes{
 	    ArrayList<buscaAvancada> resultado = new ArrayList<buscaAvancada>();
 	    ResultSet rs = null;
 	    buscaAvancada aux = null;
-	    String texto_consulta = "batata" //Completar com a consulta
-		;
+	    String texto_consulta = "" +
+                    "SELECT P.descricaointernamunicipio, N.descricao, SUM(D.valor) AS gasto\n" +
+                    "FROM despesa D, programa P, (\n" +
+                    "	SELECT codigo, descricao\n" +
+                    "	FROM natureza\n" +
+                    "	WHERE (descricao ILIKE <> OR descricao ILIKE <>)\n" +
+                    ") N\n" +
+                    "WHERE D.codigoprograma = P.codigo AND D.codigonatureza = N.codigo AND EXISTS (\n" +
+                    "	SELECT dataano\n" +
+                    "	FROM despesa\n" +
+                    "	WHERE dataano >= <> AND dataano <= <>\n" +
+                    ")\n" +
+                    "GROUP BY P.descricaointernamunicipio, N.descricao\n" +
+                    "HAVING SUM(D.valor) > <>\n" +
+                    "ORDER BY P.descricaointernamunicipi";
 
 	    System.out.println(texto_consulta);
 
