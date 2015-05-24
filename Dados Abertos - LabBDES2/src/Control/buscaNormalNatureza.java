@@ -34,8 +34,9 @@ public class buscaNormalNatureza {
 		    	aux = new buscaNormal();
 			aux.setNaturezaCodigo(rs.getInt(1));
 			aux.setNaturezaDescricao(rs.getString(2));
-			aux.setGasto(rs.getFloat(3));
+			aux.setGasto(rs.getDouble(3));
 			resultado.add(aux);
+			rs.next();
 		    }
 	    }catch(SQLException e){
 		    System.out.println(e);
@@ -69,8 +70,9 @@ public class buscaNormalNatureza {
 		    	aux = new buscaNormal();
 			aux.setNaturezaCodigo(rs.getInt(1));
 			aux.setNaturezaDescricao(rs.getString(2));
-			aux.setGasto(rs.getFloat(3));
+			aux.setGasto(rs.getDouble(3));
 			resultado.add(aux);
+			rs.next();
 		    }
 	    }catch(SQLException e){
 		    System.out.println(e);

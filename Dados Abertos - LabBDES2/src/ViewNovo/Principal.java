@@ -27,6 +27,7 @@ public class Principal extends javax.swing.JFrame {
 	private ConexaoBD con;
 	private buscaNormalNatureza buscaNormal;
 	private DefaultTableModel model;
+
 	/**
 	 * Creates new form Principal
 	 */
@@ -606,30 +607,37 @@ public class Principal extends javax.swing.JFrame {
 		    // aqui será feito a tabela
 		    ArrayList<Model.buscaNormal> resultado = null;
 		    buscaNormal = new buscaNormalNatureza(con);
-		    if(jRButtonNatureza.isSelected())
+		    if (jRButtonNatureza.isSelected()) {
 			    resultado = buscaNormal.getBuscaNormalNatureza(txtFieldConsultaSimples.getText());
-		    else
+		    } else {
 			    resultado = buscaNormal.getBuscaNormalPrograma(txtFieldConsultaSimples.getText());
-
-		    // trata a tabela
-		    model = new DefaultTableModel();
-		    model.addColumn("Peça");
-		    model.addColumn("Garantia");
-
-		    tblConsultaSimples.setModel(model);
-		    tblConsultaSimples.setEnabled(true);
-
-		    Integer i = 0;
-		    while (i < resultado.size()) {
-			    Model.buscaNormal aux = new Model.buscaNormal();
-			    aux = resultado.get(i);
-			    model.addRow(new Object[]{aux.getNaturezaCodigo(), aux.getNaturezaDescricao(),aux.getGasto()});
-			    i++;
 		    }
 
-		    CardLayout c3 = (CardLayout) (pnlCardLayout.getLayout());
-		    c3.show(pnlCardLayout, "pnlResultadoConsultaSimples");
-		    setTitle("Resultado Consulta Simples");
+		    if (resultado == null) {
+			    JOptionPane.showMessageDialog(null, "Nenhum resultado foi encontrado!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+
+		    } else {
+			    // trata a tabela
+			    model = new DefaultTableModel();
+			    model.addColumn("Código");
+			    model.addColumn("Descrição");
+			    model.addColumn("Gasto");
+
+			    tblConsultaSimples.setModel(model);
+			    tblConsultaSimples.setEnabled(true);
+
+			    Integer i = 0;
+			    while (i < resultado.size()) {
+				    Model.buscaNormal aux = new Model.buscaNormal();
+				    aux = resultado.get(i);
+				    model.addRow(new Object[]{aux.getNaturezaCodigo(), aux.getNaturezaDescricao(), aux.getGasto()});
+				    i++;
+			    }
+
+			    CardLayout c3 = (CardLayout) (pnlCardLayout.getLayout());
+			    c3.show(pnlCardLayout, "pnlResultadoConsultaSimples");
+			    setTitle("Resultado Consulta Simples");
+		    }
 	    }
 
     }//GEN-LAST:event_btPesquisarCSimplesActionPerformed
