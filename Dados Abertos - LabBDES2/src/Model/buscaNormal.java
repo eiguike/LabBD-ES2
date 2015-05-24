@@ -32,7 +32,7 @@ package Model;
 public class buscaNormal {
     private Integer codigo;
     private String descricao;
-    private Float gasto;    
+    private Double gasto;    
     
     public Integer getNaturezaCodigo() {
         return codigo;
@@ -50,11 +50,11 @@ public class buscaNormal {
         this.descricao = naturezaDescricao;
     }
 
-    public Float getGasto() {
+    public Double getGasto() {
         return gasto;
     }
 
-    public void setGasto(Float gasto) {
+    public void setGasto(Double gasto) {
         this.gasto = gasto;
     }
 }

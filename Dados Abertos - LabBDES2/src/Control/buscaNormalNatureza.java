@@ -7,11 +7,11 @@ public class buscaNormalNatureza {
     private ArrayList<buscaNormal> resultado;
     private ConexaoBD conexao;
     
-    buscaNormalNatureza(ConexaoBD con){
+    public buscaNormalNatureza(ConexaoBD con){
         conexao = con;
     }
 
-    ArrayList<buscaNormal> getBuscaNormalPrograma(String descricao){
+    public ArrayList<buscaNormal> getBuscaNormalPrograma(String descricao){
 	    ArrayList<buscaNormal> resultado = new ArrayList<buscaNormal>();
 	    ResultSet rs = null;
 	    buscaNormal aux = null;
@@ -34,8 +34,9 @@ public class buscaNormalNatureza {
 		    	aux = new buscaNormal();
 			aux.setNaturezaCodigo(rs.getInt(1));
 			aux.setNaturezaDescricao(rs.getString(2));
-			aux.setGasto(rs.getFloat(3));
+			aux.setGasto(rs.getDouble(3));
 			resultado.add(aux);
+			rs.next();
 		    }
 	    }catch(SQLException e){
 		    System.out.println(e);
@@ -44,7 +45,7 @@ public class buscaNormalNatureza {
 	    return resultado;
     }
   
-    ArrayList<buscaNormal> getBuscaNormalNatureza(String descricao){
+    public ArrayList<buscaNormal> getBuscaNormalNatureza(String descricao){
 	    ArrayList<buscaNormal> resultado = new ArrayList<buscaNormal>();
 	    ResultSet rs = null;
 	    buscaNormal aux = null;
@@ -69,8 +70,9 @@ public class buscaNormalNatureza {
 		    	aux = new buscaNormal();
 			aux.setNaturezaCodigo(rs.getInt(1));
 			aux.setNaturezaDescricao(rs.getString(2));
-			aux.setGasto(rs.getFloat(3));
+			aux.setGasto(rs.getDouble(3));
 			resultado.add(aux);
+			rs.next();
 		    }
 	    }catch(SQLException e){
 		    System.out.println(e);
