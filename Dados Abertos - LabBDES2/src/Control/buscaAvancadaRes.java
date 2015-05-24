@@ -6,6 +6,7 @@
 package Control;
 
 import Model.buscaAvancada;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class buscaAvancadaRes{
         conexao = con;
     }
 
-    ArrayList<buscaAvancada> getBuscaAvancada(/*preencher aqui com os dados necessarios*/){
+    ArrayList<buscaAvancada> getBuscaAvancada(String descricao1, String descricao2, Date dataInicio, Date dataFim, Integer valorBase){
 	    ArrayList<buscaAvancada> resultado = new ArrayList<buscaAvancada>();
 	    ResultSet rs = null;
 	    buscaAvancada aux = null;
@@ -27,15 +28,15 @@ public class buscaAvancadaRes{
                     "FROM despesa D, programa P, (\n" +
                     "	SELECT codigo, descricao\n" +
                     "	FROM natureza\n" +
-                    "	WHERE (descricao ILIKE <> OR descricao ILIKE <>)\n" +
+                    "	WHERE (descricao ILIKE "+ descricao1 +" OR descricao ILIKE "+ descricao2 +")\n" +
                     ") N\n" +
                     "WHERE D.codigoprograma = P.codigo AND D.codigonatureza = N.codigo AND EXISTS (\n" +
                     "	SELECT dataano\n" +
                     "	FROM despesa\n" +
-                    "	WHERE dataano >= <> AND dataano <= <>\n" +
+                    "	WHERE dataano >= "+ dataInicio +" AND dataano <= "+ dataFim +"\n" +
                     ")\n" +
                     "GROUP BY P.descricaointernamunicipio, N.descricao\n" +
-                    "HAVING SUM(D.valor) > <>\n" +
+                    "HAVING SUM(D.valor) > "+ valorBase +"\n" +
                     "ORDER BY P.descricaointernamunicipi";
 
 	    System.out.println(texto_consulta);
