@@ -47,7 +47,9 @@ public class buscaAvancadaRes{
 		    rs.next();
 		    while(rs.isAfterLast() == false){
 		    	aux = new buscaAvancada();
-			//adicionar aqui os sets da classe buscaAvancada
+			aux.setDescricaoInternaMunicipio(rs.getString(1));
+                        aux.setDescricaoNatureza(rs.getString(2));
+                        aux.setGasto(Float.parseFloat(rs.getString(3)));
 			resultado.add(aux);
 		    }
 	    }catch(SQLException e){
