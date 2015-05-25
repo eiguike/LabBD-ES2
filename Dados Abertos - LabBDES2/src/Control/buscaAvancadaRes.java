@@ -15,11 +15,11 @@ public class buscaAvancadaRes{
     private ArrayList<buscaAvancada> resultado;
     private ConexaoBD conexao;
     
-    buscaAvancadaRes(ConexaoBD con){
+    public buscaAvancadaRes(ConexaoBD con){
         conexao = con;
     }
 
-    ArrayList<buscaAvancada> getBuscaAvancada(String descricao1, String descricao2, Date dataInicio, Date dataFim, Integer valorBase){
+    public ArrayList<buscaAvancada> getBuscaAvancada(String descricao1, String descricao2, Integer anoInicio, Integer anoFim, Integer valorBase){
 	    ArrayList<buscaAvancada> resultado = new ArrayList<buscaAvancada>();
 	    ResultSet rs = null;
 	    buscaAvancada aux = null;
@@ -33,7 +33,7 @@ public class buscaAvancadaRes{
                     "WHERE D.codigoprograma = P.codigo AND D.codigonatureza = N.codigo AND EXISTS (\n" +
                     "	SELECT dataano\n" +
                     "	FROM despesa\n" +
-                    "	WHERE dataano >= "+ dataInicio +" AND dataano <= "+ dataFim +"\n" +
+                    "	WHERE dataano >= "+ anoInicio +" AND dataano <= "+ anoFim +"\n" +
                     ")\n" +
                     "GROUP BY P.descricaointernamunicipio, N.descricao\n" +
                     "HAVING SUM(D.valor) > "+ valorBase +"\n" +

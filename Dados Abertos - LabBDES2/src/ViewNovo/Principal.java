@@ -15,6 +15,7 @@ import javax.swing.border.Border;
 import javax.swing.JOptionPane;
 
 import Control.*;
+import Model.buscaAvancada;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -26,6 +27,7 @@ public class Principal extends javax.swing.JFrame {
 
 	private ConexaoBD con;
 	private buscaNormalNatureza buscaNormal;
+        private buscaAvancadaRes buscaAvancada;
 	private DefaultTableModel model;
 	private consultaBasica consultaBas;
 
@@ -749,7 +751,38 @@ public class Principal extends javax.swing.JFrame {
 		    txtFieldNatureza1.setForeground(txtFieldNatureza2.getForeground());
 		    lblItensObrigatorios.setVisible(false);
 
-		    //PARTE DE BUSCA AO BANCO DE DADOS
+                    //começa daqui o banco de dados
+                    ArrayList<buscaAvancada> resultado = null;
+		    buscaAvancada = new buscaAvancadaRes(con);
+		    
+                    resultado = buscaAvancada.getBuscaAvancada(txtFieldNatureza1.getText(), txtFieldNatureza2.getText(), Integer.parseInt(txtFieldDataInicial.getText()), Integer.parseInt(txtFieldDataFinal.getText()), Integer.parseInt(txtFieldValorInicial.getText()));
+
+		    if (resultado == null) {
+			    JOptionPane.showMessageDialog(null, "Nenhum resultado foi encontrado!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+
+		    } else {
+			    // trata a tabela
+			    model = new DefaultTableModel();
+			    model.addColumn("Município");
+			    model.addColumn("Descrição");
+			    model.addColumn("Gasto");
+
+			    tblConsultaAvancada.setModel(model);
+			    tblConsultaAvancada.setEnabled(true);
+
+			    Integer i = 0;
+			    while (i < resultado.size())
+                            {
+				    buscaAvancada aux = new Model.buscaAvancada();
+				    aux = resultado.get(i);
+				    model.addRow(new Object[]{aux.getDescricaoInternaMunicipio(), aux.getDescricaoNatureza(), aux.getGasto()});
+				    i++;
+			    }
+
+			    CardLayout c3 = (CardLayout) (pnlCardLayout.getLayout());
+			    c3.show(pnlCardLayout, "pnlResultadoConsultaAvancada");
+			    setTitle("Resultado Consulta Avançada");
+		    }
 	    }
     }//GEN-LAST:event_btPesquisarCAvancadaActionPerformed
 
