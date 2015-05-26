@@ -15,13 +15,13 @@ public class buscaNormalNatureza {
 	    ArrayList<buscaNormal> resultado = new ArrayList<buscaNormal>();
 	    ResultSet rs = null;
 	    buscaNormal aux = null;
-	    String texto_consulta =
-		"SELECT  N.codigo, N.descricao, SUM(Desp.valor) AS gasto FROM despesa Desp, ("
-		    + "SELECT codigo, descricao FROM natureza WHERE descricao ILIKE '%"+equipamento+"%'"
-		+ ")N, ("
-		    + "SELECT M.codigo FROM municipio M WHERE M.descricao = '"+municipio+"'"
-		+ ")Mun WHERE Mun.codigo = Desp.codigomunicipio AND N.codigo = Desp.codigonatureza "
-		+ "GROUP BY N.codigo, N.descricao ORDER BY gasto DESC;";
+
+	    String texto_consulta;
+	    if(equipamento == null){
+		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_PROGRAMA ('%%', '"+municipio+"')";
+	    }else{
+		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_PROGRAMA('%%', '"+municipio+"')";
+	    }
 
 	    System.out.println(texto_consulta);
 
@@ -44,17 +44,18 @@ public class buscaNormalNatureza {
 	    return resultado;
     }
   
-    public ArrayList<buscaNormal> getBuscaNormalNatureza(String fomento, String municipio){
+    public ArrayList<buscaNormal> getBuscaNormalNatureza(String natureza, String municipio){
 	    ArrayList<buscaNormal> resultado = new ArrayList<buscaNormal>();
 	    ResultSet rs = null;
 	    buscaNormal aux = null;
-	    String texto_consulta =
-		"SELECT  P.codigo, P.descricaointernamunicipio, SUM(Desp.valor) AS gasto FROM despesa Desp, ("
-		    + "SELECT codigo, descricaointernamunicipio FROM programa WHERE descricaointernamunicipio ILIKE '%"+fomento+"%'"
-		+ ")P, ("
-		    + "SELECT M.codigo FROM municipio M WHERE M.descricao = '"+municipio+"'"
-		+ ")Mun WHERE Mun.codigo = Desp.codigomunicipio AND P.codigo = Desp.codigoprograma "
-		    + "GROUP BY P.codigo, P.descricaointernamunicipio ORDER BY gasto DESC;";
+	    
+	    String texto_consulta;
+	    if (natureza == null){
+		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_NATUREZA ('%%', '"+municipio+"')";
+	    }else{
+		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_NATUREZA ('%"+natureza+"%', '"+municipio+"')";
+	    }
+
 
 	    System.out.println(texto_consulta);
 
