@@ -1,4 +1,4 @@
--- PROJETO INTEGRADO
+﻿-- PROJETO INTEGRADO
 -- GRUPO 8 - PROGRAMA + NATUREZA DA DESPESA
 -- Fase Intermediária 2 - Script de Programação do Banco de Dados
 -- 
@@ -54,11 +54,12 @@ CREATE INDEX indice_codPrograma ON despesa USING hash (codigoprograma); -- INDIC
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 --STORE PROCEDURES CONSULTAS SIMPLES
 
-CREATE OR REPLACE FUNCTION CONSULTA_SIMPLES_NATUREZA(VARCHAR(100), VARCHAR (100))
+CREATE OR REPLACE FUNCTION CONSULTA_SIMPLES_NATUREZA(VARCHAR(100), VARCHAR (100), VARCHAR(100))
 RETURNS TABLE(cod INTEGER, descricao VARCHAR(100), gasto NUMERIC) AS $$
 
 DECLARE natDesc ALIAS FOR $1;
 cidade ALIAS FOR $2;
+tipo_consulta ALIAS FOR $3;
 
 BEGIN
 	IF cidade IS NULL THEN
@@ -82,15 +83,18 @@ BEGIN
 			GROUP BY N.codigo, N.descricao ORDER BY gasto DESC;
 	END IF;
 
+	INSERT INTO HISTORICO VALUES(0,tipo_consulta);
+
 END;
 
 $$ LANGUAGE plpgsql;
 --------------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION CONSULTA_SIMPLES_PROGRAMA(VARCHAR(100), VARCHAR (100))
+CREATE OR REPLACE FUNCTION CONSULTA_SIMPLES_PROGRAMA(VARCHAR(100), VARCHAR (100), VARCHAR(100))
 RETURNS TABLE(cod INTEGER, descricao VARCHAR(100), gasto NUMERIC) AS $$
 
 DECLARE progDesc ALIAS FOR $1;
 cidade ALIAS FOR $2;
+tipo_consulta ALIAS FOR $3;
 
 BEGIN
 	IF cidade IS NULL THEN
@@ -115,13 +119,15 @@ BEGIN
 			GROUP BY P.codigo, P.descricao ORDER BY gasto DESC;
 	END IF;
 
+	INSERT INTO HISTORICO VALUES(0,tipo_consulta);
+
 END;
 
 $$ LANGUAGE plpgsql;
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 --STORE PROCEDURE CONSULTA AVANÇADA
 
-CREATE OR REPLACE FUNCTION CONSULTA_AVANCADA(VARCHAR(100), VARCHAR (100), VARCHAR(100), INTEGER, INTEGER, REAL, REAL)
+CREATE OR REPLACE FUNCTION CONSULTA_AVANCADA(VARCHAR(100), VARCHAR (100), VARCHAR(100), INTEGER, INTEGER, REAL, REAL, VARCHAR(100))
 RETURNS TABLE(descricaoPrograma VARCHAR(100), descricaoNatureza VARCHAR(100), gasto NUMERIC) AS $$
 
 DECLARE natureza1 ALIAS FOR $1;
@@ -131,6 +137,7 @@ anoInic ALIAS FOR $4;
 anoFinal ALIAS FOR $5;
 limiteInferior ALIAS FOR $6;
 limiteSuperior ALIAS FOR $7;
+tipo_consulta ALIAS FOR $8;
 
 BEGIN
 	IF anoInic IS NULL THEN
@@ -199,6 +206,9 @@ BEGIN
 			ORDER BY gasto DESC;
 
 	END IF;
+
+	INSERT INTO HISTORICO VALUES(0,tipo_consulta);
+	
 END;
 
 $$ LANGUAGE plpgsql;

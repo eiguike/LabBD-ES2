@@ -27,6 +27,7 @@ public class Principal extends javax.swing.JFrame {
 
 	private ConexaoBD con;
 	private buscaNormalNatureza buscaNormal;
+        private consultaHistorico historico;
         private buscaAvancadaRes buscaAvancada;
 	private DefaultTableModel model;
 	private consultaBasica consultaBas;
@@ -116,6 +117,8 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblConsultaAvancada = new javax.swing.JTable();
         pnlHistorico = new RoundedPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblConsultaHistorico = new javax.swing.JTable();
         lblRodape = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -258,7 +261,7 @@ public class Principal extends javax.swing.JFrame {
         txtFieldConsultaSimples.setForeground(new java.awt.Color(153, 153, 153));
         txtFieldConsultaSimples.setText("Pesquise...");
         txtFieldConsultaSimples.setCaretColor(new java.awt.Color(102, 102, 102));
-        txtFieldConsultaSimples.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtFieldConsultaSimples.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtFieldConsultaSimples.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldConsultaSimplesFocusGained(evt);
@@ -549,15 +552,34 @@ public class Principal extends javax.swing.JFrame {
         pnlHistorico.setForeground(new java.awt.Color(204, 204, 204));
         pnlHistorico.setName("pnlHistorico"); // NOI18N
 
+        tblConsultaHistorico.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(tblConsultaHistorico);
+
         javax.swing.GroupLayout pnlHistoricoLayout = new javax.swing.GroupLayout(pnlHistorico);
         pnlHistorico.setLayout(pnlHistoricoLayout);
         pnlHistoricoLayout.setHorizontalGroup(
             pnlHistoricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 627, Short.MAX_VALUE)
+            .addGroup(pnlHistoricoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnlHistoricoLayout.setVerticalGroup(
             pnlHistoricoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 266, Short.MAX_VALUE)
+            .addGroup(pnlHistoricoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pnlCardLayout.add(pnlHistorico, "pnlHistorico");
@@ -838,16 +860,43 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFieldNatureza2ActionPerformed
 
     private void btHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHistoricoActionPerformed
-        CardLayout c2 = (CardLayout) (pnlCardLayout.getLayout());
-
-	c2.show(pnlCardLayout, "pnlHistorico");
-
+        
         btHistorico.setBackground(new java.awt.Color(0, 0, 51));
         btConsultaAvancada.setBackground(new java.awt.Color(0, 102, 153));
         btConsultaSimples.setBackground(new java.awt.Color(0, 102, 153));
             
+            
+        
+        ArrayList<Model.historico> resultado = null;
+        historico = new consultaHistorico(con);
+                   
+                    resultado = historico.getHistorico();
 
-	    setTitle("Histórico");
+                    if (resultado == null) {
+                            JOptionPane.showMessageDialog(null, "Não há histórico!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+
+                    } else {
+                            // trata a tabela
+                            model = new DefaultTableModel();
+                            model.addColumn("Tipo de Consulta");
+                            model.addColumn("Data e horário"); //tratar depois
+
+                            tblConsultaHistorico.setModel(model);
+                            tblConsultaHistorico.setEnabled(true);
+
+                            Integer i = 0;
+                            while (i < resultado.size()) {
+                                    Model.historico aux = new Model.historico();
+                                    aux = resultado.get(i);
+                                    model.addRow(new Object[]{aux.getTipo_consulta(), aux.getData_hora()});
+                                    i++;
+                            }
+
+                           CardLayout c2 = (CardLayout) (pnlCardLayout.getLayout());
+                           c2.show(pnlCardLayout, "pnlHistorico");
+                           setTitle("Histórico");
+                    }
+        
     }//GEN-LAST:event_btHistoricoActionPerformed
 
 	/**
@@ -1013,6 +1062,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRButtonPrograma;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblAnoInvalido;
     private javax.swing.JLabel lblConsultas;
     private javax.swing.JLabel lblDataFinal;
@@ -1037,6 +1087,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel pnlResultadoConsultaAvancada;
     private javax.swing.JPanel pnlResultadoConsultaSimples;
     private javax.swing.JTable tblConsultaAvancada;
+    private javax.swing.JTable tblConsultaHistorico;
     private javax.swing.JTable tblConsultaSimples;
     private javax.swing.JTextField txtFieldConsultaSimples;
     private javax.swing.JTextField txtFieldDataFinal;
