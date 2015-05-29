@@ -11,16 +11,16 @@ public class buscaNormalNatureza {
         conexao = con;
     }
 
-    public ArrayList<buscaNormal> getBuscaNormalPrograma(String equipamento, String municipio){
+    public ArrayList<buscaNormal> getBuscaNormalPrograma(String programa, String municipio){
 	    ArrayList<buscaNormal> resultado = new ArrayList<buscaNormal>();
 	    ResultSet rs = null;
 	    buscaNormal aux = null;
 
 	    String texto_consulta;
-	    if(equipamento == null){
+	    if(programa == null){
 		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_PROGRAMA ('%%', '"+municipio+"')";
 	    }else{
-		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_PROGRAMA('%%', '"+municipio+"')";
+		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_PROGRAMA('%"+programa+"%', '"+municipio+"')";
 	    }
 
 	    System.out.println(texto_consulta);
