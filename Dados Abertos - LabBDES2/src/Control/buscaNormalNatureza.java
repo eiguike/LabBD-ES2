@@ -15,8 +15,13 @@ public class buscaNormalNatureza {
 	    ArrayList<buscaNormal> resultado = new ArrayList<buscaNormal>();
 	    ResultSet rs = null;
 	    buscaNormal aux = null;
-	    String texto_consulta =
-		"SELECT * FROM CONSULTA_SIMPLES_PROGRAMA ('%"+ programa + "%','" + municipio + "','CONSULTA SIMPLES - PROGRAMA')";
+
+	    String texto_consulta;
+	    if(programa == null){
+		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_PROGRAMA ('%%', '"+municipio+"', 'CONSULTA SIMPLES - PROGRAMA')";
+	    }else{
+		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_PROGRAMA('%"+programa+"%', '"+municipio+"', 'CONSULTA SIMPLES - PROGRAMA')";
+	    }
 
 	    System.out.println(texto_consulta);
 
@@ -43,8 +48,14 @@ public class buscaNormalNatureza {
 	    ArrayList<buscaNormal> resultado = new ArrayList<buscaNormal>();
 	    ResultSet rs = null;
 	    buscaNormal aux = null;
-	    String texto_consulta =
-		"SELECT * FROM CONSULTA_SIMPLES_NATUREZA ('%"+ natureza + "%','" + municipio + "','CONSULTA SIMPLES - NATUREZA DE DESPESA')";
+	    
+	    String texto_consulta;
+	    if (natureza == null){
+		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_NATUREZA ('%%', '"+municipio+"', 'CONSULTA SIMPLES - NATUREZA DE DESPESA')";
+	    }else{
+		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_NATUREZA ('%"+natureza+"%', '"+municipio+"', 'CONSULTA SIMPLES - NATUREZA DE DESPESA')";
+	    }
+
 
 	    System.out.println(texto_consulta);
 
