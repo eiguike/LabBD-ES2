@@ -33,9 +33,16 @@ CREATE TABLE HISTORICO (
 CREATE OR REPLACE FUNCTION HISTORICO_F() RETURNS trigger AS $HISTORICO_F$
 DECLARE valAntigo INTEGER;
 	BEGIN
-		SELECT COD INTO valAntigo FROM HISTORICO ORDER BY COD DESC LIMIT 1 ;
-		NEW.DATA := current_timestamp;
-		NEW.COD := valAntigo+1;
+		SELECT COUNT(*) INTO verificaValidade FROM HISTORICO 
+
+		IF verificaValidade < 1 THEN
+			NEW.COD := 0;
+			NEW.DATA = current_timestamp;
+		ELSE
+			SELECT COD INTO valAntigo FROM HISTORICO ORDER BY COD DESC LIMIT 1 ;
+			NEW.DATA := current_timestamp;
+			NEW.COD := valAntigo+1;
+		ENDIF;
 
 		RETURN NEW;
 	END;
