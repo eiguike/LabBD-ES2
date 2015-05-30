@@ -23,36 +23,37 @@ CREATE VIEW ProgramaView(codigo, descricao) AS
 SELECT codigo, descricaointernamunicipio
 FROM programa;
 ---------------------------------------------------------------------------------------------------------------------------------------------------
---TRIGGER
-CREATE TABLE HISTORICO (
-	COD SERIAL NOT NULL PRIMARY KEY,
-	TIPO_CONSULTA VARCHAR(100),
-	DATA TIMESTAMP
-);
+	--TRIGGER
+	CREATE TABLE HISTORICO (
+		COD SERIAL NOT NULL PRIMARY KEY,
+		TIPO_CONSULTA VARCHAR(100),
+		DATA DATE,
+		HORARIO TIME
+	);
 
-CREATE OR REPLACE FUNCTION HISTORICO_F() RETURNS trigger AS $HISTORICO_F$
-DECLARE valAntigo INTEGER;
-	BEGIN
-		SELECT COUNT(*) INTO verificaValidade FROM HISTORICO 
-
-		IF verificaValidade < 1 THEN
-			NEW.COD := 0;
-			NEW.DATA = current_timestamp;
-		ELSE
+	CREATE OR REPLACE FUNCTION HISTORICO_F() RETURNS trigger AS $HISTORICO_F$
+	DECLARE valAntigo INTEGER;
+	DECLARE verificaValidade INTEGER;
+		BEGIN
 			SELECT COD INTO valAntigo FROM HISTORICO ORDER BY COD DESC LIMIT 1 ;
-			NEW.DATA := current_timestamp;
-			NEW.COD := valAntigo+1;
-		ENDIF;
+			NEW.DATA := current_date;
+			if(valAntigo = null)then
+				NEW.COD := 0;
+			else
+				NEW.COD := valAntigo+1;
+			end if;
 
-		RETURN NEW;
-	END;
+			RETURN NEW;
+		END;
 
-$HISTORICO_F$ LANGUAGE plpgsql;
+	$HISTORICO_F$ LANGUAGE plpgsql;
 
 
--- CRIACAO DA TRIGGER EM HISTORICO, ANTES DE REALIZAR UMA INSERCAO
-CREATE TRIGGER HISTORICO_F BEFORE INSERT ON HISTORICO
-FOR EACH ROW EXECUTE PROCEDURE HISTORICO_F();
+	-- CRIACAO DA TRIGGER EM HISTORICO, ANTES DE REALIZAR UMA INSERCAO
+	CREATE TRIGGER HISTORICO_F BEFORE INSERT ON HISTORICO
+	FOR EACH ROW EXECUTE PROCEDURE HISTORICO_F();
+
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 --OTIMIZAÇÕES
