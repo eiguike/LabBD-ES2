@@ -37,6 +37,7 @@ FROM programa;
 		BEGIN
 			SELECT COD INTO valAntigo FROM HISTORICO ORDER BY COD DESC LIMIT 1 ;
 			NEW.DATA := current_date;
+			NEW.HORARIO := current_time;
 			if(valAntigo = null)then
 				NEW.COD := 0;
 			else
