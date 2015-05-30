@@ -1,4 +1,3 @@
-
 package Model;
 
 import java.sql.Date;
@@ -9,26 +8,32 @@ import java.sql.Date;
  */
 public class historico {
 
+	private String data;
+	private String hora;
+	private String tipo_consulta;
 
-   private String data_hora;
-   
-   private String tipo_consulta;
+	public String getHora() {
+		return hora;
+	}
 
-    public String getData_hora() {
-        return data_hora;
-    }
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
 
-    public void setData_hora(String data_hora) {
-        this.data_hora = data_hora;
-    }
+	public String getData() {
+		return data;
+	}
 
-    public String getTipo_consulta() {
-        return tipo_consulta;
-    }
+	public void setData(String data) {
+		this.data = data;
+	}
 
-    public void setTipo_consulta(String string) {
-        this.tipo_consulta = string;
-    }
-   
-    
+	public String getTipo_consulta() {
+		return tipo_consulta;
+	}
+
+	public void setTipo_consulta(String string) {
+		this.tipo_consulta = string;
+	}
+
 }

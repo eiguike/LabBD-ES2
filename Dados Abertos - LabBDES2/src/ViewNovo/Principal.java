@@ -879,7 +879,8 @@ public class Principal extends javax.swing.JFrame {
                             // trata a tabela
                             model = new DefaultTableModel();
                             model.addColumn("Tipo de Consulta");
-                            model.addColumn("Data e horário"); //tratar depois
+                            model.addColumn("Data"); //tratar depois
+                            model.addColumn("Horário"); //tratar depois
 
                             tblConsultaHistorico.setModel(model);
                             tblConsultaHistorico.setEnabled(true);
@@ -888,7 +889,7 @@ public class Principal extends javax.swing.JFrame {
                             while (i < resultado.size()) {
                                     Model.historico aux = new Model.historico();
                                     aux = resultado.get(i);
-                                    model.addRow(new Object[]{aux.getTipo_consulta(), aux.getData_hora()});
+                                    model.addRow(new Object[]{aux.getTipo_consulta(), aux.getData(),aux.getHora()});
                                     i++;
                             }
 

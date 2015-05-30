@@ -24,7 +24,7 @@ public class ConexaoBD {
             Class.forName("org.postgresql.Driver").newInstance();
             
             myConnection = DriverManager.getConnection("jdbc:postgresql:" +
-                    "//localhost:5433/Projeto?user=postgres&password=1234");
+                    "//localhost:5432/trabalho?user=postgres&password=postgres");
             st = myConnection.createStatement();
             setConectado(true);
         }
