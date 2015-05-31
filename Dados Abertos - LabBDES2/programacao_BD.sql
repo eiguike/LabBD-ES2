@@ -1,12 +1,12 @@
 ﻿-- PROJETO INTEGRADO
 -- GRUPO 8 - PROGRAMA + NATUREZA DA DESPESA
--- Fase Intermediária 2 - Script de Programação do Banco de Dados
+-- Entrega Final - Script de Programação do Banco de Dados
 -- 
 -- Alunos:
--- HENRIQUE EIHARA: 490016
--- GABRIELA DE JESUS MARTINS: 489689
--- GUSTAVO RODRIGUES: 489999
--- VALDEIR SOARES PEROZIM: 489786
+-- HENRIQUE EIHARA: 			490016
+-- GABRIELA DE JESUS MARTINS: 	489689
+-- GUSTAVO RODRIGUES: 			489999
+-- VALDEIR SOARES PEROZIM: 		489786
 --
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -23,52 +23,57 @@ CREATE VIEW ProgramaView(codigo, descricao) AS
 SELECT codigo, descricaointernamunicipio
 FROM programa;
 ---------------------------------------------------------------------------------------------------------------------------------------------------
-	--TRIGGER
-	CREATE TABLE HISTORICO (
-		COD SERIAL NOT NULL PRIMARY KEY,
-		TIPO_CONSULTA VARCHAR(100),
-		DATA DATE,
-		HORARIO TIME
-	);
+--TRIGGER
+CREATE TABLE HISTORICO (
+	COD SERIAL NOT NULL PRIMARY KEY,
+	TIPO_CONSULTA VARCHAR(100),
+	DATA DATE,
+	HORARIO TIME
+);
 
-	CREATE OR REPLACE FUNCTION HISTORICO_F() RETURNS trigger AS $HISTORICO_F$
-	DECLARE valAntigo INTEGER;
-	DECLARE verificaValidade INTEGER;
-		BEGIN
-			SELECT COD INTO valAntigo FROM HISTORICO ORDER BY COD DESC LIMIT 1 ;
-			NEW.DATA := current_date;
-			NEW.HORARIO := current_time;
-			if(valAntigo = null)then
-				NEW.COD := 0;
-			else
-				NEW.COD := valAntigo+1;
-			end if;
+-- Inserção de valor padrão para contornar problema de inserção do 1º valor que a 
+-- chamada da trigger não consegue tratar
+-- INSERT INTO HISTORICO VALUES(0, 'Padrao', current_date, current_time);
 
-			RETURN NEW;
-		END;
+CREATE OR REPLACE FUNCTION HISTORICO_F() RETURNS trigger AS $HISTORICO_F$
 
-	$HISTORICO_F$ LANGUAGE plpgsql;
+DECLARE 
+	valAntigo INTEGER;
 
+BEGIN
+	SELECT COUNT(COD) INTO valAntigo FROM HISTORICO;
+		IF(valAntigo != 0) THEN
+			SELECT MAX(COD) INTO valAntigo FROM HISTORICO;
+			NEW.COD := valAntigo+1;
+		END IF;
+		
+		NEW.DATA := current_date;
+		NEW.HORARIO := current_time;
 
-	-- CRIACAO DA TRIGGER EM HISTORICO, ANTES DE REALIZAR UMA INSERCAO
-	CREATE TRIGGER HISTORICO_F BEFORE INSERT ON HISTORICO
-	FOR EACH ROW EXECUTE PROCEDURE HISTORICO_F();
+		RETURN NEW;
+END;
 
+$HISTORICO_F$ LANGUAGE plpgsql;
 
+-- CRIACAO DA TRIGGER EM HISTORICO, ANTES DE REALIZAR UMA INSERCAO
+CREATE TRIGGER HISTORICO_F BEFORE INSERT ON HISTORICO
+FOR EACH ROW EXECUTE PROCEDURE HISTORICO_F();
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 --OTIMIZAÇÕES
 CREATE INDEX indice_codNatureza ON despesa USING hash (codigonatureza); -- INDICE PARA CONSULTA SIMPLES -NATUREZA
 CREATE INDEX indice_codPrograma ON despesa USING hash (codigoprograma); -- INDICE PARA CONSULTA SIMPLES -PROGRAMA
+CREATE INDEX indice_dataano 	ON despesa using btree(dataano);		-- PARA CONSULTA DE TRATAMENTO DE PARÂMETROS NÃO INFORMADOS NAS PROCEDURES
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 --STORE PROCEDURES CONSULTAS SIMPLES
 
 CREATE OR REPLACE FUNCTION CONSULTA_SIMPLES_NATUREZA(VARCHAR(100), VARCHAR (100), VARCHAR(100))
 RETURNS TABLE(cod INTEGER, descricao VARCHAR(100), gasto NUMERIC) AS $$
 
-DECLARE natDesc ALIAS FOR $1;
-cidade ALIAS FOR $2;
-tipo_consulta ALIAS FOR $3;
+DECLARE 
+	natDesc ALIAS FOR $1;
+	cidade ALIAS FOR $2;
+	tipo_consulta ALIAS FOR $3;
 
 BEGIN
 	IF cidade IS NULL THEN
@@ -101,19 +106,17 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION CONSULTA_SIMPLES_PROGRAMA(VARCHAR(100), VARCHAR (100), VARCHAR(100))
 RETURNS TABLE(cod INTEGER, descricao VARCHAR(100), gasto NUMERIC) AS $$
 
-DECLARE progDesc ALIAS FOR $1;
-cidade ALIAS FOR $2;
-tipo_consulta ALIAS FOR $3;
+DECLARE 
+	progDesc ALIAS FOR $1;
+	cidade ALIAS FOR $2;
+	tipo_consulta ALIAS FOR $3;
 
 BEGIN
 	IF cidade IS NULL THEN
 		cidade := 'Campinas';
-
 	END IF;
 
-
 	IF progDesc IS NULL THEN --RETORNA A AGREGAÇÃO PARA TODAS OS PROGRAMAS
-
 		RETURN QUERY
 			SELECT  P.codigo, P.descricaointernamunicipio, SUM(Desp.valor) AS gasto FROM despesa Desp, programa P, (
 				SELECT M.codigo FROM CodMunicipio M WHERE M.descricao = cidade)Mun  --usando view
@@ -139,22 +142,23 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION CONSULTA_AVANCADA(VARCHAR(100), VARCHAR (100), VARCHAR(100), INTEGER, INTEGER, REAL, REAL, VARCHAR(100))
 RETURNS TABLE(descricaoPrograma VARCHAR(100), descricaoNatureza VARCHAR(100), gasto NUMERIC) AS $$
 
-DECLARE natureza1 ALIAS FOR $1;
-natureza2 ALIAS FOR $2;
-cidade ALIAS FOR $3;
-anoInic ALIAS FOR $4;
-anoFinal ALIAS FOR $5;
-limiteInferior ALIAS FOR $6;
-limiteSuperior ALIAS FOR $7;
-tipo_consulta ALIAS FOR $8;
+DECLARE 
+	natureza1 ALIAS FOR $1;
+	natureza2 ALIAS FOR $2;
+	cidade ALIAS FOR $3;
+	anoInic ALIAS FOR $4;
+	anoFinal ALIAS FOR $5;
+	limiteInferior ALIAS FOR $6;
+	limiteSuperior ALIAS FOR $7;
+	tipo_consulta ALIAS FOR $8;
 
 BEGIN
 	IF anoInic IS NULL THEN
-		SELECT  dataano INTO anoInic FROM despesa ORDER BY dataano ASC LIMIT 1;
+		SELECT MIN(dataano) INTO anoInic FROM despesa;
 	END IF;
 
 	IF anoFinal IS NULL THEN
-		SELECT  dataano INTO anoFinal FROM despesa ORDER BY dataano DESC LIMIT 1;
+		SELECT MAX(dataano) INTO anoFinal FROM despesa;
 	END IF;
 
 	IF limiteInferior IS NULL THEN
@@ -163,7 +167,6 @@ BEGIN
 
 	IF cidade IS NULL THEN
 		cidade := 'Campinas';
-
 	END IF;
 
 
