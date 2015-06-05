@@ -24,7 +24,7 @@ public class consultaHistorico {
         String consulta;
         historico campo;
         
-        consulta = "SELECT tipo_consulta, data, horario FROM HISTORICO";
+        consulta = "SELECT tipo_consulta, texto_consulta, data, horario FROM HISTORICO";
 	System.out.println(consulta);
         
         try{
@@ -34,8 +34,9 @@ public class consultaHistorico {
             while(rs.isAfterLast() == false){
                  campo = new historico();
                  campo.setTipo_consulta(rs.getString(1));
-                 campo.setData(rs.getDate(2).toString());
-		 campo.setHora(rs.getTime(3).toString());
+                 campo.setTexto_consulta(rs.getString(2));
+                 campo.setData(rs.getDate(3).toString());
+		 campo.setHora(rs.getTime(4).toString());
                  resultado.add(campo);
                  rs.next();
             }

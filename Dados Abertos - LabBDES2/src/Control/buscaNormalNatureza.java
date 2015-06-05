@@ -18,9 +18,9 @@ public class buscaNormalNatureza {
 
 	    String texto_consulta;
 	    if(programa == null){
-		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_PROGRAMA ('%%', '"+municipio+"', 'CONSULTA SIMPLES - PROGRAMA')";
+		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_PROGRAMA ('%%', '"+municipio+"', 'CONSULTA SIMPLES - PROGRAMA', 'CAMPO DE PESQUISA VAZIO')";
 	    }else{
-		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_PROGRAMA('%"+programa+"%', '"+municipio+"', 'CONSULTA SIMPLES - PROGRAMA')";
+		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_PROGRAMA('%"+programa+"%', '"+municipio+"', 'CONSULTA SIMPLES - PROGRAMA', '"+programa+"')";
 	    }
 
 	    System.out.println(texto_consulta);
@@ -51,9 +51,9 @@ public class buscaNormalNatureza {
 	    
 	    String texto_consulta;
 	    if (natureza == null){
-		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_NATUREZA ('%%', '"+municipio+"', 'CONSULTA SIMPLES - NATUREZA DE DESPESA')";
+		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_NATUREZA ('%%', '"+municipio+"', 'CONSULTA SIMPLES - NATUREZA DE DESPESA', 'CAMPO DE PESQUISA VAZIO')";
 	    }else{
-		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_NATUREZA ('%"+natureza+"%', '"+municipio+"', 'CONSULTA SIMPLES - NATUREZA DE DESPESA')";
+		    texto_consulta = "SELECT * FROM CONSULTA_SIMPLES_NATUREZA ('%"+natureza+"%', '"+municipio+"', 'CONSULTA SIMPLES - NATUREZA DE DESPESA','"+natureza+"')";
 	    }
 
 

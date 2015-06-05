@@ -1,4 +1,4 @@
--- PROJETO INTEGRADO
+﻿-- PROJETO INTEGRADO
 -- GRUPO 8 - PROGRAMA + NATUREZA DA DESPESA
 -- Entrega Final - Script de Programação do Banco de Dados
 -- 
@@ -11,9 +11,6 @@
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 --VIEWS
-CREATE VIEW CodMunicipio(codigo) AS
-SELECT codigo, descricao
-FROM municipio;
 
 CREATE VIEW NaturezaView AS
 SELECT codigo, descricao
@@ -22,11 +19,18 @@ FROM natureza;
 CREATE VIEW ProgramaView(codigo, descricao) AS
 SELECT codigo, descricaointernamunicipio
 FROM programa;
+
+CREATE VIEW ConsultaAvancada(munic, natu, progr, data, gasto) AS
+	SELECT d.codigomunicipio, d.codigoprograma, d.codigonatureza, d.dataano, SUM(d.valor) 
+	FROM despesa d, programa p, natureza n, municipio m WHERE m.codigo = d.codigomunicipio 
+	AND d.codigoprograma = p.codigo AND d.codigonatureza = n.codigo 
+	GROUP BY d.codigomunicipio, d.codigoprograma, d.codigonatureza, d.dataano;
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 	--TRIGGER
 	CREATE TABLE HISTORICO (
 		COD SERIAL NOT NULL PRIMARY KEY,
 		TIPO_CONSULTA VARCHAR(100),
+		TEXTO_CONSULTA VARCHAR(100),
 		DATA DATE,
 		HORARIO TIME
 	);
@@ -62,12 +66,13 @@ CREATE INDEX indice_dataano 	ON despesa using btree(dataano);		-- PARA CONSULTA 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 --STORE PROCEDURES CONSULTAS SIMPLES
 
-CREATE OR REPLACE FUNCTION CONSULTA_SIMPLES_NATUREZA(VARCHAR(100), VARCHAR (100), VARCHAR(100))
+CREATE OR REPLACE FUNCTION CONSULTA_SIMPLES_NATUREZA(VARCHAR(100), VARCHAR (100), VARCHAR(100), VARCHAR (100))
 RETURNS TABLE(cod INTEGER, descricao VARCHAR(100), gasto NUMERIC) AS $$
 
 DECLARE natDesc ALIAS FOR $1;
 cidade ALIAS FOR $2;
 tipo_consulta ALIAS FOR $3;
+texto_consulta ALIAS FOR $4;
 
 BEGIN
 	IF cidade IS NULL THEN
@@ -78,30 +83,31 @@ BEGIN
 
 		RETURN QUERY
 			SELECT  N.codigo, N.descricao, SUM(Desp.valor) AS gasto FROM despesa Desp, natureza N, (
-				SELECT M.codigo FROM CodMunicipio M WHERE M.descricao = cidade)Mun --usando a view
+				SELECT M.codigo FROM Municipio M WHERE M.descricao = cidade)Mun 
 			WHERE Mun.codigo = Desp.codigomunicipio AND N.codigo = Desp.codigonatureza
 			GROUP BY N.codigo, N.descricao ORDER BY gasto DESC;
 	ELSE -- RETORNA A AGREGAÇÃO PARA UMA NATUREZA ESPECÍFICA
 		RETURN QUERY
 			SELECT  N.codigo, N.descricao, SUM(Desp.valor) AS gasto FROM despesa Desp,
 				(SELECT * FROM naturezaView Nat WHERE Nat.descricao ILIKE natDesc )N,  --usando view
-				(SELECT M.codigo FROM CodMunicipio M WHERE M.descricao = cidade)Mun --usando a view
+				(SELECT M.codigo FROM Municipio M WHERE M.descricao = cidade)Mun 
 			WHERE Mun.codigo = Desp.codigomunicipio AND N.codigo = Desp.codigonatureza
 			GROUP BY N.codigo, N.descricao ORDER BY gasto DESC;
 	END IF;
 
-	INSERT INTO HISTORICO VALUES(1,tipo_consulta);
+	INSERT INTO HISTORICO VALUES(1,tipo_consulta, texto_consulta);
 
 END;
 
 $$ LANGUAGE plpgsql;
 --------------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION CONSULTA_SIMPLES_PROGRAMA(VARCHAR(100), VARCHAR (100), VARCHAR(100))
+CREATE OR REPLACE FUNCTION CONSULTA_SIMPLES_PROGRAMA(VARCHAR(100), VARCHAR (100), VARCHAR(100), VARCHAR(100))
 RETURNS TABLE(cod INTEGER, descricao VARCHAR(100), gasto NUMERIC) AS $$
 
 DECLARE progDesc ALIAS FOR $1;
 cidade ALIAS FOR $2;
 tipo_consulta ALIAS FOR $3;
+texto_consulta ALIAS FOR $4;
 
 BEGIN
 	IF cidade IS NULL THEN
@@ -113,19 +119,19 @@ BEGIN
 
 		RETURN QUERY
 			SELECT  P.codigo, P.descricaointernamunicipio, SUM(Desp.valor) AS gasto FROM despesa Desp, programa P, (
-				SELECT M.codigo FROM CodMunicipio M WHERE M.descricao = cidade)Mun  --usando view
+				SELECT M.codigo FROM Municipio M WHERE M.descricao = cidade)Mun 
 			WHERE Mun.codigo = Desp.codigomunicipio AND P.codigo = Desp.codigoprograma
 			GROUP BY P.codigo, P.descricaointernamunicipio ORDER BY gasto DESC;
 	ELSE -- RETORNA A AGREGAÇÃO PARA UM PROGRAMA ESPECÍFICA
 		RETURN QUERY
 			SELECT  P.codigo, P.descricao, SUM(Desp.valor) AS gasto FROM despesa Desp,
 				(SELECT * FROM ProgramaView Prog WHERE Prog.descricao ILIKE progDesc)P, --usando view
-				(SELECT M.codigo FROM CodMunicipio M WHERE M.descricao = cidade)Mun --usando view
+				(SELECT M.codigo FROM Municipio M WHERE M.descricao = cidade)Mun 
 			WHERE Mun.codigo = Desp.codigomunicipio AND P.codigo = Desp.codigoprograma
 			GROUP BY P.codigo, P.descricao ORDER BY gasto DESC;
 	END IF;
 
-	INSERT INTO HISTORICO VALUES(1,tipo_consulta);
+	INSERT INTO HISTORICO VALUES(1,tipo_consulta, texto_consulta);
 
 END;
 
@@ -133,7 +139,7 @@ $$ LANGUAGE plpgsql;
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 --STORE PROCEDURE CONSULTA AVANÇADA
 
-CREATE OR REPLACE FUNCTION CONSULTA_AVANCADA(VARCHAR(100), VARCHAR (100), VARCHAR(100), INTEGER, INTEGER, REAL, REAL, VARCHAR(100))
+CREATE OR REPLACE FUNCTION CONSULTA_AVANCADA(VARCHAR(100), VARCHAR (100), VARCHAR(100), INTEGER, INTEGER, REAL, REAL, VARCHAR(100), VARCHAR(100))
 RETURNS TABLE(descricaoPrograma VARCHAR(100), descricaoNatureza VARCHAR(100), gasto NUMERIC) AS $$
 
 DECLARE natureza1 ALIAS FOR $1;
@@ -144,6 +150,7 @@ anoFinal ALIAS FOR $5;
 limiteInferior ALIAS FOR $6;
 limiteSuperior ALIAS FOR $7;
 tipo_consulta ALIAS FOR $8;
+texto_consulta ALIAS FOR $9;
 
 BEGIN
 	IF anoInic IS NULL THEN
@@ -166,54 +173,53 @@ BEGIN
 
 	IF natureza2 IS NULL AND limiteSuperior IS NULL THEN
 		RETURN QUERY
-			SELECT P.descricaointernamunicipio , N.descricao , SUM(D.valor) AS gasto FROM despesa D, programa P, (
-				SELECT * FROM naturezaView Nat WHERE Nat.descricao ILIKE natureza1) N,( --usando view
-					SELECT M.codigo FROM CodMunicipio M WHERE M.descricao = cidade)Mun --usando view
-			WHERE Mun.codigo = D.codigomunicipio AND D.codigoprograma = P.codigo AND D.codigonatureza = N.codigo AND
-			(dataano >= anoInic and dataano <= anoFinal)
-			GROUP BY P.descricaointernamunicipio , N.descricao
-			HAVING SUM(D.valor) > limiteInferior
-			ORDER BY gasto DESC;
+			SELECT P.descricaointernamunicipio , N.descricao , C.gasto FROM programa P,ConsultaAvancada C,(
+				SELECT * FROM natureza Nat WHERE Nat.descricao ILIKE natureza1)N,(
+					SELECT M.codigo FROM Municipio M WHERE M.descricao = cidade )Mun
+			WHERE(C.data >= anoInic and C.data <= anoFinal)
+			GROUP BY P.descricaointernamunicipio , N.descricao, C.gasto
+			HAVING C.gasto > limiteInferior
+			ORDER BY C.gasto DESC;
 
 	ELSIF natureza2 IS NULL AND limiteSuperior IS NOT NULL THEN
 		RETURN QUERY
-			SELECT P.descricaointernamunicipio , N.descricao , SUM(D.valor) AS gasto FROM despesa D, programa P, (
-				SELECT * FROM naturezaView Nat WHERE Nat.descricao ILIKE natureza1) N,( --usando view
-					SELECT M.codigo FROM CodMunicipio M WHERE M.descricao = cidade)Mun --usando view
-			WHERE Mun.codigo = D.codigomunicipio AND D.codigoprograma = P.codigo AND D.codigonatureza = N.codigo AND
-				(dataano >= anoInic and dataano <= anoFinal)
-			GROUP BY P.descricaointernamunicipio , N.descricao
-			HAVING SUM(D.valor) > limiteInferior AND SUM(D.valor) < limiteSuperior
-			ORDER BY gasto DESC;
+			SELECT P.descricaointernamunicipio , N.descricao , C.gasto FROM despesa D, programa P, ConsultaAvancada C, (
+				SELECT * FROM naturezaView Nat WHERE Nat.descricao ILIKE natureza1) N,( 
+					SELECT M.codigo FROM Municipio M WHERE M.descricao = cidade)Mun
+			WHERE (C.data >= anoInic and C.data <= anoFinal)
+			GROUP BY P.descricaointernamunicipio , N.descricao, C.gasto
+			HAVING C.gasto > limiteInferior AND C.gasto < limiteSuperior
+			ORDER BY C.gasto DESC;
+
 
 	ELSIF natureza2 IS NOT NULL AND limiteSuperior IS NULL THEN
 		RETURN QUERY
 
-			SELECT P.descricaointernamunicipio , N.descricao , SUM(D.valor) AS gasto FROM despesa D, programa P, (
+			SELECT P.descricaointernamunicipio , N.descricao , C.gasto FROM despesa D, programa P, ConsultaAvancada C, (
 				SELECT * FROM naturezaView Nat WHERE Nat.descricao ILIKE natureza1 UNION --view
 				SELECT * FROM naturezaView Nat WHERE Nat.descricao ILIKE natureza2) N,( --view
-					SELECT M.codigo FROM CodMunicipio M WHERE M.descricao = cidade)Mun --view
-			WHERE Mun.codigo = D.codigomunicipio AND D.codigoprograma = P.codigo AND D.codigonatureza = N.codigo AND
-				(dataano >= anoInic and dataano <= anoFinal)
-			GROUP BY P.descricaointernamunicipio , N.descricao
-			HAVING SUM(D.valor) > limiteInferior
-			ORDER BY gasto DESC;
+					SELECT M.codigo FROM Municipio M WHERE M.descricao = cidade)Mun 
+			WHERE (C.data >= anoInic and C.data <= anoFinal)
+			GROUP BY P.descricaointernamunicipio , N.descricao, C.gasto
+			HAVING C.gasto > limiteInferior
+			ORDER BY C.gasto DESC;
 	ELSE
 		RETURN QUERY
 
-			SELECT P.descricaointernamunicipio , N.descricao , SUM(D.valor) AS gasto FROM despesa D, programa P, (
+			
+			SELECT P.descricaointernamunicipio , N.descricao , C.gasto FROM despesa D, programa P, ConsultaAvancada C,(
 				SELECT * FROM naturezaView Nat WHERE Nat.descricao ILIKE natureza1 UNION --view
 				SELECT * FROM naturezaView Nat WHERE Nat.descricao ILIKE natureza2) N,( --view
-					SELECT M.codigo FROM CodMunicipio M WHERE M.descricao = cidade)Mun --view
+					SELECT M.codigo FROM Municipio M WHERE M.descricao = cidade)Mun
 			WHERE Mun.codigo = D.codigomunicipio AND D.codigoprograma = P.codigo AND D.codigonatureza = N.codigo AND
-				(dataano >= anoInic and dataano <= anoFinal)
-			GROUP BY P.descricaointernamunicipio , N.descricao
-			HAVING SUM(D.valor) > limiteInferior AND SUM(D.valor) < limiteSuperior
-			ORDER BY gasto DESC;
+				(C.data >= anoInic and C.data <= anoFinal)
+			GROUP BY P.descricaointernamunicipio , N.descricao, C.gasto
+			HAVING C.gasto > limiteInferior AND C.gasto < limiteSuperior
+			ORDER BY C.gasto DESC;
 
 	END IF;
 
-	INSERT INTO HISTORICO VALUES(1,tipo_consulta);
+	INSERT INTO HISTORICO VALUES(1,tipo_consulta, texto_consulta);
 	
 END;
 

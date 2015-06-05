@@ -11,6 +11,7 @@ public class historico {
 	private String data;
 	private String hora;
 	private String tipo_consulta;
+        private String texto_consulta;
 
 	public String getHora() {
 		return hora;
@@ -35,5 +36,19 @@ public class historico {
 	public void setTipo_consulta(String string) {
 		this.tipo_consulta = string;
 	}
+
+    /**
+     * @return the texto_consulta
+     */
+    public String getTexto_consulta() {
+        return texto_consulta;
+    }
+
+    /**
+     * @param texto_consulta the texto_consulta to set
+     */
+    public void setTexto_consulta(String texto_consulta) {
+        this.texto_consulta = texto_consulta;
+    }
 
 }
