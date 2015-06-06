@@ -19,26 +19,12 @@ public class buscaAvancadaRes{
         conexao = con;
     }
 
-    public ArrayList<buscaAvancada> getBuscaAvancada(String descricao1, String descricao2, Integer anoInicio, Integer anoFim, Integer valorBase){
+    public ArrayList<buscaAvancada> getBuscaAvancada(String descricao1, String descricao2, String cidade, Integer anoInicio, Integer anoFim, Integer valorInicial, Integer valorFinal){
 	    ArrayList<buscaAvancada> resultado = new ArrayList<buscaAvancada>();
 	    ResultSet rs = null;
 	    buscaAvancada aux = null;
-	    String texto_consulta = "" +
-                    "SELECT P.descricaointernamunicipio, N.descricao, SUM(D.valor) AS gasto\n" +
-                    "FROM despesa D, programa P, (\n" +
-                    "	SELECT codigo, descricao\n" +
-                    "	FROM natureza\n" +
-                    "	WHERE (descricao ILIKE "+ descricao1 +" OR descricao ILIKE "+ descricao2 +")\n" +
-                    ") N\n" +
-                    "WHERE D.codigoprograma = P.codigo AND D.codigonatureza = N.codigo AND EXISTS (\n" +
-                    "	SELECT dataano\n" +
-                    "	FROM despesa\n" +
-                    "	WHERE dataano >= "+ anoInicio +" AND dataano <= "+ anoFim +"\n" +
-                    ")\n" +
-                    "GROUP BY P.descricaointernamunicipio, N.descricao\n" +
-                    "HAVING SUM(D.valor) > "+ valorBase +"\n" +
-                    "ORDER BY P.descricaointernamunicipi";
-
+	    String texto_consulta = 
+                    "SELECT * FROM CONSULTA_AVANCADA('%"+descricao1+"%','%"+descricao2+"%','"+cidade+"',"+anoInicio+","+anoFim+","+valorInicial+","+valorFinal+",'CONSULTA AVANÇADA','"+descricao1+" "+descricao2+" "+cidade+" "+anoInicio+" "+anoFim+" "+valorInicial+" "+valorFinal+"');";
 	    System.out.println(texto_consulta);
 
 	    try{
