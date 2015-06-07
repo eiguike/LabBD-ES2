@@ -133,7 +133,7 @@ $$ LANGUAGE plpgsql;
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 --STORE PROCEDURE CONSULTA AVANÇADA
 
-CREATE OR REPLACE FUNCTION CONSULTA_AVANCADA(VARCHAR(100), VARCHAR (100), VARCHAR(100), INTEGER, INTEGER, REAL, REAL, VARCHAR(100))
+CREATE OR REPLACE FUNCTION CONSULTA_AVANCADA(VARCHAR(100), VARCHAR (100), VARCHAR(100), INTEGER, INTEGER, REAL, REAL, VARCHAR(100), VARCHAR(100))
 RETURNS TABLE(descricaoPrograma VARCHAR(100), descricaoNatureza VARCHAR(100), gasto NUMERIC) AS $$
 
 DECLARE natureza1 ALIAS FOR $1;
@@ -144,6 +144,8 @@ anoFinal ALIAS FOR $5;
 limiteInferior ALIAS FOR $6;
 limiteSuperior ALIAS FOR $7;
 tipo_consulta ALIAS FOR $8;
+texto_consulta ALIAS FOR $9;
+
 
 BEGIN
   IF anoInic IS NULL THEN
@@ -213,7 +215,7 @@ BEGIN
 
   END IF;
 
-  INSERT INTO HISTORICO VALUES(1,tipo_consulta);
+  INSERT INTO HISTORICO VALUES(1,tipo_consulta, texto_consulta);
   
 END;
 

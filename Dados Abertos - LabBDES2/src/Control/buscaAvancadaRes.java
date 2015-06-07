@@ -37,6 +37,7 @@ public class buscaAvancadaRes{
                         aux.setDescricaoNatureza(rs.getString(2));
                         aux.setGasto(Float.parseFloat(rs.getString(3)));
 			resultado.add(aux);
+                        rs.next();
 		    }
 	    }catch(SQLException e){
 		    System.out.println(e);

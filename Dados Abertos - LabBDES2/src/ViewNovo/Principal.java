@@ -349,9 +349,9 @@ public class Principal extends javax.swing.JFrame {
 
         lblNatureza2.setText("Natureza 2:");
 
-        lblDataInicial.setText("Data Inicial:");
+        lblDataInicial.setText("Ano Inicial:");
 
-        lblDataFinal.setText("Data Final:");
+        lblDataFinal.setText("Ano Final:");
 
         lblValorInicial.setText("Valor Inicial:");
 
@@ -826,13 +826,13 @@ public class Principal extends javax.swing.JFrame {
             if (txtFieldDataInicial.getText().isEmpty()) {
                 dataInicial = null;
             } else {
-                dataInicial = Integer.parseInt(txtFieldDataFinal.getText());
+                dataInicial = Integer.parseInt(txtFieldDataInicial.getText());
             }
 
-            if (txtFieldValorInicial.getText().isEmpty()) {
+            if (txtFieldDataFinal.getText().isEmpty()) {
                 dataFinal = null;
             } else {
-                dataFinal = Integer.parseInt(txtFieldValorInicial.getText());
+                dataFinal = Integer.parseInt(txtFieldDataFinal.getText());
             }
 
             if (txtFieldValorInicial.getText().isEmpty()) {
@@ -841,7 +841,7 @@ public class Principal extends javax.swing.JFrame {
                 valorInicial = Integer.parseInt(txtFieldValorInicial.getText());
             }
 
-            if (txtFieldValorInicial.getText().isEmpty()) {
+            if (txtFieldValorFinal.getText().isEmpty()) {
                 valorFinal = null;
             } else {
                 valorFinal = Integer.parseInt(txtFieldValorFinal.getText());

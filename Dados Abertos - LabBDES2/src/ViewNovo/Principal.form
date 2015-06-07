@@ -622,12 +622,12 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblDataInicial">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Data Inicial:"/>
+                    <Property name="text" type="java.lang.String" value="Ano Inicial:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblDataFinal">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Data Final:"/>
+                    <Property name="text" type="java.lang.String" value="Ano Final:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblValorInicial">
