@@ -1,0 +1,31 @@
+% Arquivo com configurações gerais e definição de novos comandos
+
+\pagestyle{headings} % numeração de página no cabeçalho
+\onehalfspacing
+\setlength{\parindent}{1cm} % Default is 15pt.
+
+% Definição de fonte sem-serifa. Ex: Arial, iwona, clearsans
+\renewcommand*{\familydefault}{\sfdefault}
+
+% Atalho para definir italico em palavras em inglês
+\newcommand{\ing}[1]{\textit{#1}}
+
+% Atalho para formatar chave primária
+\newcommand{\pk}[1]{\uline{#1}}
+
+% Formatar atributo
+\newcommand{\atrib}[1]{\texttt{#1}}
+
+% Não lembro para o que era usado =)
+\newcommand{\cb}[1]{\bf{#1}}
+
+\definecolor{ac}{RGB}{39, 106, 123}
+\definecolor{al1}{RGB}{164, 212, 225}
+\definecolor{al2}{RGB}{236, 246, 248}
+
+\newcommand{\rfb}[1]{\cellcolor{ac}{\color{white}\textbf{#1}}}
+
+%Para remover os títulos do cabeçalho
+%http://www.latex-community.org/forum/viewtopic.php?f=47&t=4700
+\renewcommand*\sectionmark[1]{\markboth{#1}{}}
+\renewcommand*\subsectionmark[1]{\markboth{#1}{}}
