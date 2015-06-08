@@ -1,21 +1,3 @@
-/*
-Model para a seguinte consulta:
-
-SELECT P.descricaointernamunicipio, N.descricao, SUM(D.valor) AS gasto
-FROM despesa D, programa P, (
-	SELECT codigo, descricao
-	FROM natureza
-	WHERE (descricao ILIKE <> OR descricao ILIKE <>)
-) N
-WHERE D.codigoprograma = P.codigo AND D.codigonatureza = N.codigo AND EXISTS (
-	SELECT dataano
-	FROM despesa
-	WHERE dataano >= <> AND dataano <= <>
-)
-GROUP BY P.descricaointernamunicipio, N.descricao
-HAVING SUM(D.valor) > <>
-ORDER BY P.descricaointernamunicipio
- */
 package Model;
 
 /**
@@ -23,31 +5,95 @@ package Model;
  * @author floss
  */
 public class buscaAvancada {
-    private String  descricaoInternaMunicipio;
-    private String  descricaoNatureza;
-    private Float   gasto;
 
-    public String getDescricaoInternaMunicipio() {
-        return descricaoInternaMunicipio;
-    }
+	public String getCidade() {
+		return cidade;
+	}
 
-    public void setDescricaoInternaMunicipio(String descricaoInternaMunicipio) {
-        this.descricaoInternaMunicipio = descricaoInternaMunicipio;
-    }
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
 
-    public String getDescricaoNatureza() {
-        return descricaoNatureza;
-    }
+	public String getNatureza1() {
+		return natureza1;
+	}
 
-    public void setDescricaoNatureza(String descricaoNatureza) {
-        this.descricaoNatureza = descricaoNatureza;
-    }
+	public void setNatureza1(String natureza1) {
+		this.natureza1 = natureza1;
+	}
 
-    public Float getGasto() {
-        return gasto;
-    }
+	public String getNatureza2() {
+		return natureza2;
+	}
 
-    public void setGasto(Float gasto) {
-        this.gasto = gasto;
-    }
+	public void setNatureza2(String natureza2) {
+		this.natureza2 = natureza2;
+	}
+
+	public Integer getAnoInicio() {
+		return anoInicio;
+	}
+
+	public void setAnoInicio(Integer anoInicio) {
+		this.anoInicio = anoInicio;
+	}
+
+	public Integer getAnoFim() {
+		return anoFim;
+	}
+
+	public void setAnoFim(Integer anoFim) {
+		this.anoFim = anoFim;
+	}
+
+	public Integer getValorInicio() {
+		return valorInicio;
+	}
+
+	public void setValorInicio(Integer valorInicio) {
+		this.valorInicio = valorInicio;
+	}
+
+	public Integer getValorFim() {
+		return valorFim;
+	}
+
+	public void setValorFim(Integer valorFim) {
+		this.valorFim = valorFim;
+	}
+	private String natureza2;
+	private Integer anoInicio;
+	private Integer anoFim;
+	private Integer valorInicio;
+	private String cidade;
+	private String natureza1;
+	private Integer valorFim;
+
+	private String descricaoInternaMunicipio;
+	private String descricaoNatureza;
+	private Float gasto;
+
+	public String getDescricaoInternaMunicipio() {
+		return descricaoInternaMunicipio;
+	}
+
+	public void setDescricaoInternaMunicipio(String descricaoInternaMunicipio) {
+		this.descricaoInternaMunicipio = descricaoInternaMunicipio;
+	}
+
+	public String getDescricaoNatureza() {
+		return descricaoNatureza;
+	}
+
+	public void setDescricaoNatureza(String descricaoNatureza) {
+		this.descricaoNatureza = descricaoNatureza;
+	}
+
+	public Float getGasto() {
+		return gasto;
+	}
+
+	public void setGasto(Float gasto) {
+		this.gasto = gasto;
+	}
 }

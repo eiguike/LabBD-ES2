@@ -847,8 +847,7 @@ public class Principal extends javax.swing.JFrame {
                 valorFinal = Integer.parseInt(txtFieldValorFinal.getText());
             }
 
-             //resultado = buscaAvancada.getBuscaAvancada(txtFieldNatureza1.getText(), txtFieldNatureza2.getText(), Integer.parseInt(txtFieldDataInicial.getText()), Integer.parseInt(txtFieldDataFinal.getText()), Integer.parseInt(txtFieldValorInicial.getText()));
-            resultado = buscaAvancada.getBuscaAvancada(txtFieldNatureza1.getText(), txtFieldNatureza2.getText(), jComboBoxMunicipio2.getSelectedItem().toString(), dataInicial, dataFinal, valorInicial, valorFinal);
+	    resultado = buscaAvancada.getBuscaAvancada(txtFieldNatureza1.getText(), txtFieldNatureza2.getText(), "Campinas", dataInicial, dataFinal, valorInicial, valorFinal);
 
             if (resultado == null) {
                 JOptionPane.showMessageDialog(null, "Nenhum resultado foi encontrado!", "Aviso!", JOptionPane.WARNING_MESSAGE);
