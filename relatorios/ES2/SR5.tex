@@ -1,0 +1,218 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[normalem]{ulem}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{url}
+\usepackage[final]{pdfpages}
+% Configuração da página, paragrafos e fonte
+%----------------------------------------------------------------------------
+
+\usepackage[a4paper]{geometry}
+
+\geometry{hmargin={3cm,3cm},vmargin={3.5cm,2.5cm}} % margens horizontais com 3cm e verticais com 3.5 e 2.5
+
+% section diferenciado
+\usepackage{titlesec, color}
+\definecolor{bleudefrance}{rgb}{0.19, 0.55, 0.91}
+\newcommand{\hsp}{\hspace{5pt}}
+\titleformat{\section}[hang]{\Large\bfseries}{\thesection\hsp\textcolor{bleudefrance}{|}\hsp}{0pt}{\Large\bfseries}
+% section diferenciado
+
+
+% Cores nas linhas da tabela
+\usepackage{color, colortbl}
+\definecolor{electricgreen}{rgb}{0.0, 1.0, 0.0}
+\definecolor{ultramarineblue}{rgb}{0.25, 0.5, 0.96}
+
+
+
+\pagestyle{headings} % numeração de página no cabeçalho
+\onehalfspacing
+\setlength{\parindent}{1cm} % Default is 15pt.
+
+%%%% NOME DO DOCUMENTO NO OVERLEAF
+\title{Status Report 5}
+
+%%%% METADADOS DO PDF   
+   \pdfinfo{
+   /Author (Alessandro Henrique Gabriela Gustavo)
+   /Title  (Status Report 5 380105 490016 489689 489999)
+%    /CreationDate (D:20040502195600)
+   /Subject (Integrado)
+   /Keywords (ES2 LabBD Status Report)
+}
+
+\begin{document}
+
+%Para remover os títulos do cabeçalho
+%http://www.latex-community.org/forum/viewtopic.php?f=47&t=4700
+\renewcommand*\sectionmark[1]{\markboth{#1}{}}
+\renewcommand*\subsectionmark[1]{\markboth{#1}{}}
+
+% ##################################
+% *CAPA!
+% ##################################
+
+\begin{titlepage}
+%----------------------------------------------------------------------------
+\begin{center}
+{\bf \large UNIVERSIDADE FEDERAL DE SÃO CARLOS}\\[0.2cm]
+{\large BACHARELADO EM CIÊNCIA DA COMPUTAÇÃO}\\[0.2cm]
+
+% {\bf \large CENTRO DE CIÊNCIAS E TECNOLOGIAS PARA A SUSTENTABILIDADE}\\[0.2cm]
+% {\bf \large CAMPUS SOROCABA}\\[1cm]
+\end{center}
+
+\vfill
+\begin{center}
+{\bf \large ENGENHARIA DE SOFTWARE II E\\LABORATÓRIO DE BANCO DE DADOS}\\[3.2cm]
+\end{center}
+
+\begin{center}
+{\bf \LARGE PROJETO INTEGRADO}\\[0.3cm]
+{\bf \Large GRUPO 8 - PROGRAMA + NATUREZA DA DESPESA}\\[2.2cm]
+\end{center}
+
+\vfill
+\begin{flushright}
+{\large \textbf{DOCENTES}: ALEXANDRE ÁLVARO}\\[0.2cm]
+{\large SAHUDY MONTENEGRO GONZÁLES}\\[0.5cm]
+\end{flushright}
+
+\vfill
+\begin{flushright}
+{\large {\bf ALUNOS}: ALESSANDRO VISOTTO PICCOLI: 380105}\\[0.15cm]
+{\large HENRIQUE EIHARA: 490016}\\[0.15cm]
+{\large GABRIELA DE JESUS MARTINS: 489689}\\[0.15cm]
+{\large GUSTAVO RODRIGUES: 489999}\\[0.15cm]
+%{\large VALDEIR SOARES PEROZIM: 489786}\\[1cm]
+\end{flushright}
+
+\vfill
+\begin{flushright}
+{\large Data de entrega: 11/05/2015}\\[0.2cm]
+{\large Status Report 5}\\[2.0cm]
+\end{flushright}
+
+\begin{center}
+{\large Sorocaba}\\[0.2cm]
+{\large 2015}
+\end{center}
+
+\end{titlepage}
+%----------------------------------------------------------------------------
+
+% ##################################
+% *CORPO DO TEXTO!
+% ##################################
+\newpage
+
+\section{Resumo do Período}
+
+\begin{longtable}{|l|l|}
+\hline
+\textbf{Status Report} & 5\\
+\hline
+\textbf{Período}	&	04/05/2015 à 11/05/2015 \\
+\hline
+\end{longtable}
+
+%Finalização da otimização do Banco de Dados, além do início da implementação interna do SGDB.
+
+\section{Atividades do Período}
+
+Neste período foi finalizada a Implementação do \textit{Model} e realizada a otimização do Banco de Dados.
+
+\begin{itemize}
+
+\item{Otimização/Indexação do Banco de Dados;}
+
+\item{Implementação do \textit{Model}.}
+
+
+\end{itemize}
+
+% Portanto estas etapas serão refeitas e terão seus prazos atualizados.
+
+
+\section{Próximas Atividades}
+
+Pretendemos finalizar as correções e realizar os devidos testes na:
+
+\begin{itemize}
+
+\item{Implementação do \textit{Control};}
+
+\item{Implementação do \textit{View}.}
+
+\end{itemize}
+
+
+\newpage
+\section{Cronograma}
+
+A seguir o cronograma com a estimativa de tempo para realizar as atividades que compõem as entregas do produto. A parte verde representa as atividades já concluídas:\\
+
+% , a azul representa as que tiveram alterações no prazo
+
+{\normalsize %Aplica o tamanho de fonte abaixo para toda tabela. 2ª chave está lá em baixo
+
+\begin{longtable}{|l|c|c|}
+\hline
+\multicolumn{1}{|c|}{\textbf{Atividade}}  & \multicolumn{1}{c|}{\textbf{Início}} & \multicolumn{1}{c|}{\textbf{Fim}} \\ \hline
+
+\hline
+\rowcolor{electricgreen}
+Definição das consultas ao banco de dados & 24/03/2015                           & 27/03/2015                        \\ \hline
+
+\hline
+\rowcolor{electricgreen}
+Implementação das consultas SQL           & 27/03/2015                           & 31/03/2015                        \\ \hline
+
+\hline
+\rowcolor{electricgreen}
+Desenvolvimento do plano de projeto       & 02/04/2015                           & 06/04/2015                        \\ 
+
+\hline
+\rowcolor{electricgreen}
+Prototipagem das janelas de consulta      & 06/04/2015                           & 07/04/2015                        \\ \hline
+
+\hline
+\rowcolor{electricgreen}
+Implementação interna do SGBD             & 24/04/2015                           & 30/04/2015                        \\ \hline
+
+\hline
+\rowcolor{electricgreen}
+Implementação do \textit{Model}           & 04/05/2015                           & 11/05/2015                        \\ \hline
+
+\hline
+\rowcolor{electricgreen}
+Otimização/Indexação do Banco de Dados    & 04/05/2015                           & 11/05/2015                        \\ \hline
+
+\hline
+Implementação da \textit{View}            & 04/05/2015                           & 18/05/2015                        \\ \hline
+
+\hline
+Implementação do \textit{Control}         & 09/05/2015                           & 18/05/2015                        \\ \hline
+
+
+
+Teste da \textit{View}                    & 15/05/2015                           & 15/05/2015                        \\ \hline
+Ajuste da \textit{View}                   & 15/05/2015                           & 17/05/2015                        \\ \hline
+Teste da \textit{View} + \textit{Control} & 18/05/2015                           & 18/05/2015                        \\ \hline
+Ajuste do \textit{Control}                & 18/05/2015                           & 19/05/2015                        \\ \hline
+Ajustes finais no banco de dados          & 19/05/2015                           & 25/05/2015                        \\ \hline
+Entrega final                             & \multicolumn{1}{c|}{-}               & 08/06/2015                        \\ \hline
+Apresentação final                        & \multicolumn{1}{c|}{-}               & 10/06/2015                        \\ \hline
+\end{longtable}
+}
+
+
+\end{document}
