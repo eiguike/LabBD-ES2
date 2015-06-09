@@ -84,7 +84,7 @@
                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="pnlMenu" max="32767" attributes="0"/>
-                      <Component id="pnlCardLayout" max="32767" attributes="0"/>
+                      <Component id="pnlCardLayout" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="lblRodape" min="-2" max="-2" attributes="0"/>
@@ -399,7 +399,7 @@
                       <Color blue="66" green="66" red="66" type="rgb"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Cursor Padr&#xe3;o"/>
+                      <Color id="Default Cursor"/>
                     </Property>
                   </Properties>
                   <Events>
