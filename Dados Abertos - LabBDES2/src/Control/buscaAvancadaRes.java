@@ -23,7 +23,7 @@ public class buscaAvancadaRes{
 	    ArrayList<buscaAvancada> resultado = new ArrayList<buscaAvancada>();
 	    ResultSet rs = null;
 	    buscaAvancada aux = null;
-	    String texto_consulta = 
+                    String texto_consulta = 
                     "SELECT * FROM CONSULTA_AVANCADA('%"+descricao1+"%','%"+descricao2+"%','"+cidade+"',"+anoInicio+","+anoFim+","+valorInicial+","+valorFinal+",'CONSULTA AVANÇADA','"+descricao1+" "+descricao2+" "+cidade+" "+anoInicio+" "+anoFim+" "+valorInicial+" "+valorFinal+"');";
 	    System.out.println(texto_consulta);
 
