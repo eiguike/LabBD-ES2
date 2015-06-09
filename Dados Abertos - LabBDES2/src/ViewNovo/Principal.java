@@ -759,7 +759,7 @@ public class Principal extends javax.swing.JFrame {
                 while (i < resultado.size()) {
                     Model.buscaNormal aux = new Model.buscaNormal();
                     aux = resultado.get(i);
-                    model.addRow(new Object[]{aux.getNaturezaCodigo(), aux.getNaturezaDescricao(), aux.getGasto()});
+                    model.addRow(new Object[]{aux.getNaturezaCodigo(), aux.getNaturezaDescricao(), "R$ "+aux.getGasto()});
                     i++;
                 }
 
@@ -887,7 +887,7 @@ public class Principal extends javax.swing.JFrame {
                 while (i < resultado.size()) {
                     buscaAvancada aux = new Model.buscaAvancada();
                     aux = resultado.get(i);
-                    model.addRow(new Object[]{aux.getDescricaoInternaMunicipio(), aux.getDescricaoNatureza(), aux.getGasto()});
+                    model.addRow(new Object[]{aux.getDescricaoInternaMunicipio(), aux.getDescricaoNatureza(), "R$ "+aux.getGasto()});
                     i++;
                 }
 

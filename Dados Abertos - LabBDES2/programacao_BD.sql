@@ -1,4 +1,4 @@
-﻿-- PROJETO INTEGRADO
+-- PROJETO INTEGRADO
 -- GRUPO 8 - PROGRAMA + NATUREZA DA DESPESA
 -- Entrega Final - Script de Programação do Banco de Dados
 -- 
@@ -171,7 +171,7 @@ BEGIN
 			(dataano >= anoInic and dataano <= anoFinal)
 		GROUP BY P.descricaointernamunicipio , N.descricao
 		HAVING SUM(D.valor) > limiteInferior
-		ORDER BY gasto DESC;
+		ORDER BY P.descricaointernamunicipio DESC;
 		
 	ELSIF natureza2 IS NULL AND limiteSuperior IS NOT NULL THEN
 		RETURN QUERY
@@ -182,7 +182,7 @@ BEGIN
 			(dataano >= anoInic and dataano <= anoFinal)
 		GROUP BY P.descricaointernamunicipio , N.descricao
 		HAVING SUM(D.valor) > limiteInferior AND SUM(D.valor) < limiteSuperior
-		ORDER BY gasto DESC;
+		ORDER BY P.descricaointernamunicipio DESC;
 
 	ELSIF natureza2 IS NOT NULL AND limiteSuperior IS NULL THEN
 		RETURN QUERY
@@ -194,7 +194,7 @@ BEGIN
 			(dataano >= anoInic and dataano <= anoFinal)
 		GROUP BY P.descricaointernamunicipio , N.descricao
 		HAVING SUM(D.valor) > limiteInferior
-		ORDER BY gasto DESC;
+		ORDER BY P.descricaointernamunicipio DESC;
 	
 	ELSE
 		RETURN QUERY
@@ -206,7 +206,7 @@ BEGIN
 			(dataano >= anoInic and dataano <= anoFinal)
 		GROUP BY P.descricaointernamunicipio , N.descricao
 		HAVING SUM(D.valor) > limiteInferior AND SUM(D.valor) < limiteSuperior
-		ORDER BY gasto DESC;
+		ORDER BY P.descricaointernamunicipio DESC;
 	END IF;
 	
 	INSERT INTO HISTORICO VALUES(1, tipo_consulta, texto_consulta);
