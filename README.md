@@ -20,14 +20,14 @@ Desenvolver um sistema que realiza a apresentação e busca de dados abertos gov
 |~~Prototipagem das janelas de consulta~~      |~~06/04/2015~~|~~07/04/2015~~|
 |~~Implementação do *Model*~~                  |~~13/04/2015~~|~~13/04/2015~~|
 |~~Implementação do *View*~~                   |~~08/04/2015~~|~~17/04/2015~~|
-|~~ Otimização/Indexação do Banco de Dados~~       |~~17/04/2015~~|~~24/04/2015~~|
-|~~ Implementação interna do SGBD~~                |~~24/04/2015~~|~~30/04/2015~~|
-|~~ Implementação do Control~~                     |~~09/05/2015~~|~~14/04/2015~~|
-|~~ Teste da View~~                                |~~15/05/2015~~|~~15/05/2015~~|
-|~~ Ajuste da View~~                               |~~15/05/2015~~|~~17/05/2015~~|
-|~~ Teste da View + Control~~                      |~~18/05/2015~~|~~18/05/2015~~|
-|~~ Ajuste do Control~~                            |~~18/05/2015~~|~~19/05/2015~~|
-|~~ Ajustes finais do banco de dados~~             |~~19/05/2015~~|~~25/05/2015~~|
-|~~ Entrega final~~                                |    -     |~~08/06/2015~~|
+|~~Otimização/Indexação do Banco de Dados~~       |~~17/04/2015~~|~~24/04/2015~~|
+|~~Implementação interna do SGBD~~                |~~24/04/2015~~|~~30/04/2015~~|
+|~~Implementação do Control~~                     |~~09/05/2015~~|~~14/04/2015~~|
+|~~Teste da View~~                                |~~15/05/2015~~|~~15/05/2015~~|
+|~~Ajuste da View~~                               |~~15/05/2015~~|~~17/05/2015~~|
+|~~Teste da View + Control~~                      |~~18/05/2015~~|~~18/05/2015~~|
+|~~Ajuste do Control~~                            |~~18/05/2015~~|~~19/05/2015~~|
+|~~Ajustes finais do banco de dados~~             |~~19/05/2015~~|~~25/05/2015~~|
+|~~Entrega final~~                                |    -     |~~08/06/2015~~|
 | Apresentação final                           |    -     |10/06/2015|
 
