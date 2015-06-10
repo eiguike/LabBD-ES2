@@ -33,7 +33,7 @@ public class buscaNormalNatureza {
 		    	aux = new buscaNormal();
 			aux.setNaturezaCodigo(rs.getInt(1));
 			aux.setNaturezaDescricao(rs.getString(2));
-			aux.setGasto(rs.getDouble(3));
+			aux.setGasto(rs.getString(3));
 			resultado.add(aux);
 			rs.next();
 		    }
@@ -67,7 +67,7 @@ public class buscaNormalNatureza {
 		    	aux = new buscaNormal();
 			aux.setNaturezaCodigo(rs.getInt(1));
 			aux.setNaturezaDescricao(rs.getString(2));
-			aux.setGasto(rs.getDouble(3));
+			aux.setGasto(rs.getString(3));
 			resultado.add(aux);
 			rs.next();
 		    }
