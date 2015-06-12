@@ -71,7 +71,7 @@ public class buscaAvancada {
 
 	private String descricaoInternaMunicipio;
 	private String descricaoNatureza;
-	private Float gasto;
+	private String gasto;
 
 	public String getDescricaoInternaMunicipio() {
 		return descricaoInternaMunicipio;
@@ -89,11 +89,11 @@ public class buscaAvancada {
 		this.descricaoNatureza = descricaoNatureza;
 	}
 
-	public Float getGasto() {
+	public String getGasto() {
 		return gasto;
 	}
 
-	public void setGasto(Float gasto) {
+	public void setGasto(String gasto) {
 		this.gasto = gasto;
 	}
 }

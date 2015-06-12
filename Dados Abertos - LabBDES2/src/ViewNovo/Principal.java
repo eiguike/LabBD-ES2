@@ -39,6 +39,7 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         lblItensObrigatorios.setVisible(false);
         lblAnoInvalido.setVisible(false);
+        lblValorInvalido.setVisible(false);
         lblAnoInvalido.setForeground(Color.red);
         lblItensObrigatorios.setForeground(Color.red);
         txtFieldConsultaSimples.setToolTipText("Insira aqui uma natureza de despesa ou programa.");
@@ -112,6 +113,7 @@ public class Principal extends javax.swing.JFrame {
         txtFieldValorFinal = new RoundJTextField(25);
         btPesquisarCAvancada = new javax.swing.JButton();
         jComboBoxMunicipio2 = new javax.swing.JComboBox();
+        lblValorInvalido = new javax.swing.JLabel();
         pnlResultadoConsultaSimples = new RoundedPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblConsultaSimples = new javax.swing.JTable();
@@ -412,19 +414,23 @@ public class Principal extends javax.swing.JFrame {
 
         jComboBoxMunicipio2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        lblValorInvalido.setForeground(new java.awt.Color(255, 0, 0));
+        lblValorInvalido.setText("Valor Inválido");
+
         javax.swing.GroupLayout pnlConsultaAvancadaLayout = new javax.swing.GroupLayout(pnlConsultaAvancada);
         pnlConsultaAvancada.setLayout(pnlConsultaAvancadaLayout);
         pnlConsultaAvancadaLayout.setHorizontalGroup(
             pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
-                .addContainerGap(106, Short.MAX_VALUE)
+                .addContainerGap(103, Short.MAX_VALUE)
                 .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
                         .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblMunicipio)
                             .addComponent(lblNatureza1)
                             .addComponent(lblDataInicial)
-                            .addComponent(lblValorInicial))
+                            .addComponent(lblValorInicial)
+                            .addComponent(lblValorInvalido))
                         .addGap(18, 18, 18)
                         .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
@@ -448,7 +454,7 @@ public class Principal extends javax.swing.JFrame {
                                         .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(btPesquisarCAvancada)
                                             .addComponent(txtFieldValorFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addContainerGap(130, Short.MAX_VALUE))
+                                        .addContainerGap(126, Short.MAX_VALUE))
                                     .addGroup(pnlConsultaAvancadaLayout.createSequentialGroup()
                                         .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtFieldDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -489,7 +495,9 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(txtFieldValorFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblValorInicial))
                 .addGap(27, 27, 27)
-                .addComponent(btPesquisarCAvancada, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlConsultaAvancadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btPesquisarCAvancada, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblValorInvalido))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblItensObrigatorios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -637,7 +645,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlCardLayout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnlCardLayout, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(24, 24, 24)
                 .addComponent(lblRodape)
                 .addContainerGap())
@@ -670,6 +678,7 @@ public class Principal extends javax.swing.JFrame {
         btConsultaAvancada.setBackground(new java.awt.Color(0, 102, 153));
 
         setTitle("Consulta Simples");
+        txtFieldConsultaSimples.setText("");
 
     }//GEN-LAST:event_btConsultaSimplesActionPerformed
 
@@ -683,6 +692,13 @@ public class Principal extends javax.swing.JFrame {
         btConsultaSimples.setBackground(new java.awt.Color(0, 102, 153));
 
         setTitle("Consulta Avançada");
+        
+        txtFieldNatureza1.setText("");
+        txtFieldNatureza2.setText("");
+        txtFieldDataInicial.setText("");
+        txtFieldDataFinal.setText("");
+        txtFieldValorInicial.setText("");
+        txtFieldValorFinal.setText("");
     }//GEN-LAST:event_btConsultaAvancadaActionPerformed
 
     private void txtFieldConsultaSimplesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldConsultaSimplesFocusGained
@@ -776,7 +792,40 @@ public class Principal extends javax.swing.JFrame {
         if (jComboBoxMunicipio2.getSelectedItem().toString().isEmpty() || txtFieldNatureza1.getText().isEmpty()
                 || (!txtFieldDataInicial.getText().isEmpty() && Integer.parseInt(txtFieldDataInicial.getText()) < 2000)
                 || (!txtFieldDataFinal.getText().isEmpty() && (Integer.parseInt(txtFieldDataFinal.getText()) > 2015
-                || Integer.parseInt(txtFieldDataFinal.getText()) < Integer.parseInt(txtFieldDataInicial.getText())))) {
+                || Integer.parseInt(txtFieldDataFinal.getText()) < Integer.parseInt(txtFieldDataInicial.getText())))
+                /*|| (Integer.parseInt(txtFieldValorInicial.getText()) < 0 || Integer.parseInt(txtFieldValorInicial.getText()) > Integer.parseInt(txtFieldValorFinal.getText())
+                || Integer.parseInt(txtFieldValorFinal.getText()) < 0)*/) {
+            
+            /*if(Integer.parseInt(txtFieldValorInicial.getText()) < 0 || Integer.parseInt(txtFieldValorInicial.getText()) > Integer.parseInt(txtFieldValorFinal.getText())
+                || Integer.parseInt(txtFieldValorFinal.getText()) < 0)
+            {
+                if(Integer.parseInt(txtFieldValorInicial.getText()) < 0 || Integer.parseInt(txtFieldValorInicial.getText()) > Integer.parseInt(txtFieldValorFinal.getText()))
+                {
+                    txtFieldValorInicial.setForeground(Color.red);
+                    txtFieldValorInicial.setCaretColor(Color.red);
+                    lblValorInicial.setForeground(Color.red);
+                    lblValorInvalido.setVisible(true);
+                }
+                else
+                {
+                    txtFieldValorFinal.setForeground(Color.red);
+                    txtFieldValorFinal.setCaretColor(Color.red);
+                    lblValorFinal.setForeground(Color.red);
+                    lblValorInvalido.setVisible(true);
+                }
+            }
+            else
+            {
+                lblValorFinal.setForeground(lblNatureza2.getForeground());
+                lblValorInicial.setForeground(lblNatureza2.getForeground());
+                txtFieldValorInicial.setCaretColor(txtFieldNatureza2.getCaretColor());
+                txtFieldValorInicial.setForeground(txtFieldNatureza2.getForeground());
+                lblNatureza1.setForeground(lblNatureza2.getForeground());
+                txtFieldValorFinal.setCaretColor(txtFieldNatureza2.getCaretColor());
+                txtFieldValorFinal.setForeground(txtFieldNatureza2.getForeground());
+                lblValorInvalido.setVisible(false);
+            }*/
+            
             if (jComboBoxMunicipio2.getSelectedItem().toString().isEmpty()) {
                 lblMunicipio.setForeground(Color.red);
                 jComboBoxMunicipio2.setForeground(Color.red);
@@ -834,6 +883,14 @@ public class Principal extends javax.swing.JFrame {
             lblDataFinal.setForeground(lblNatureza2.getForeground());
             txtFieldDataFinal.setCaretColor(txtFieldNatureza2.getCaretColor());
             txtFieldDataFinal.setForeground(txtFieldNatureza2.getForeground());
+            /*lblValorFinal.setForeground(lblNatureza2.getForeground());
+            lblValorInicial.setForeground(lblNatureza2.getForeground());
+            txtFieldValorInicial.setCaretColor(txtFieldNatureza2.getCaretColor());
+            txtFieldValorInicial.setForeground(txtFieldNatureza2.getForeground());
+            lblNatureza1.setForeground(lblNatureza2.getForeground());
+            txtFieldValorFinal.setCaretColor(txtFieldNatureza2.getCaretColor());
+            txtFieldValorFinal.setForeground(txtFieldNatureza2.getForeground());
+            lblValorInvalido.setVisible(false);*/
 
             //começa daqui o banco de dados
             ArrayList<buscaAvancada> resultado = null;
@@ -1123,6 +1180,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel lblRodape;
     private javax.swing.JLabel lblValorFinal;
     private javax.swing.JLabel lblValorInicial;
+    private javax.swing.JLabel lblValorInvalido;
     private javax.swing.JPanel pnlBordaBotoes;
     private javax.swing.JPanel pnlCardLayout;
     private javax.swing.JPanel pnlConsultaAvancada;

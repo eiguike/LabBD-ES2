@@ -35,7 +35,7 @@ public class buscaAvancadaRes{
 		    	aux = new buscaAvancada();
 			aux.setDescricaoInternaMunicipio(rs.getString(1));
                         aux.setDescricaoNatureza(rs.getString(2));
-                        aux.setGasto(Float.parseFloat(rs.getString(3)));
+                        aux.setGasto(rs.getString(3));
 			resultado.add(aux);
                         rs.next();
 		    }
